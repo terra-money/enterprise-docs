@@ -8,15 +8,15 @@ module.exports = async function config() {
   const math = (await import("remark-math")).default;
   const katex = (await import("rehype-katex")).default;
   return {
-    title: "Warp Docs",
-    tagline: "The official docs for Warp",
+    title: "Enterprise Docs",
+    tagline: "The official docs for Enterprise",
     url: "https://docs.terra.money",
     baseUrl: "/",
     onBrokenLinks: "throw",
     onBrokenMarkdownLinks: "warn",
     favicon: "img/favicon.ico",
     organizationName: "terra-money", // Usually your GitHub org/user name.
-    projectName: "warp-docs", // Usually your repo name.
+    projectName: "enterprise-docs", // Usually your repo name.
     i18n: {
       defaultLocale: "en",
       locales: ["en"],
@@ -45,7 +45,7 @@ module.exports = async function config() {
             routeBasePath: "/", // Serve the docs at the site's root
             // Please change this to your repo.
             // Remove this to remove the "edit this page" links.
-            editUrl: "https://github.com/terra-money/docs/blob/main/",
+            editUrl: "https://github.com/terra-money/enterprise-docs/blob/main/",
           },
           blog: false,
           theme: {
@@ -91,7 +91,7 @@ module.exports = async function config() {
           contextualSearch: true,
         },
         navbar: {
-          title: "Warp Docs",
+          title: "Enterprise Docs",
           //logo: {
             //alt: "Terra Docs",
             //src: "img/logo_light.svg",
@@ -106,7 +106,7 @@ module.exports = async function config() {
               "aria-label": "Terra Money",
             },
             {
-              href: "https://github.com/terra-money/docs",
+              href: "https://github.com/terra-money/enterprise-docs",
               position: "right",
               className: "header-github-link",
               "aria-label": "GitHub repository",
