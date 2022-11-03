@@ -1,0 +1,100 @@
+---
+sidebar_position: 3
+---
+
+import Admonition from '@theme/Admonition';
+
+# Configurations and parameters
+
+When creating a DAO, you will be required to input parameters outlining the DAO. Read this section carefully to understand the different aspects of a DAO. 
+
+<Admonition type="caution" title="Updating parameters">
+
+After creation, [general parameters](#general-parameters) can only be updated using a [DAO configuration proposal](./governance.mdx#dao-configuration-proposals). 
+
+</Admonition>
+
+## General parameters
+
+All DAOs require the following configuration parameters: 
+
+#### Name
+
+The name of your DAO. This name will be public and appear on the DAO page. 
+
+#### Logo URL
+
+The URL of a logo image.
+
+#### Social Media Links
+
+Use this section to input your social media handles and URLs. Social media is a great way for DAOs to build and update a community. 
+
+### Governance configuration
+
+In addition to the parameters above, all DAOs require the following governance parameters.
+
+
+{/* This section is copied from governance.mdx It must be updated in that location as well */}
+
+#### Threshold
+
+The percentage of yes votes required to pass a proposal. 
+
+#### Quorum 
+
+The minimum number of tokens that need to vote for an election to be valid, expressed as a percentage of total staked token supply. Proposals that don't meet quorum fail, regardless of the vote outcome. 
+
+#### Unlocking period 
+
+The period of time it takes for a staked token to become unstaked. Tokens in the unstaking phase cannot be used to cast a vote. Once the unstaking period is over, the owner can claim them. 
+
+#### Vote duration
+
+The period of time during which a user can vote on a proposal. When a proposal is created, the vote duration starts. Once the vote duration is reached, the votes are tallied and the proposal either passes or fails. No votes can be cast after the voting period. 
+
+## Specific parameters
+
+Different DAOs will require specific parameters according to the DAO's type. 
+
+### Multisig parameters
+
+In addition to the [general parameters](#general-parameters), multisig DAOs contain the following specific parameter.
+
+#### Weights
+
+When creating a multisig DAO, each owner's wallet address is input along with a weight. The weight specifies the signature power of a wallet. A wallet with a weight of 20% has twice as much as a wallet with a 10% weight. Transactions are considered fully signed when the combined weight of the signers is greater than or equal to 100. 
+
+### NFT DAO parameters
+
+
+In addition to the [general parameters](#general-parameters), NFT Community DAOs contain the following specific parameters.
+
+#### NFT Name
+
+The name of the NFT you want to create. 
+
+#### NFT Symbol
+
+A Symbol for your NFT. This is usually 4 letters or fewer. 
+
+#### NFT Minter
+
+The address for the NFT minter contract. Enterprise does not supply an NFT minting contract, and this must be provided by the user.  
+
+<Admonition type="tip" title="Using an existing NFT collection">
+
+If you want to make a DAO around an existing NFT collection, 
+
+</Admonition>
+
+
+### Token DAO parameters
+
+In addition to the [general parameters](#general-parameters), Token Community DAOs contain the following specific parameters.
+
+
+## Updating configurations
+
+General Parameters of a DAO can be updated by creating and passing a [DAO configuration proposal](./governance.mdx#dao-configuration-proposals).
+
