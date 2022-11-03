@@ -1,0 +1,155 @@
+## Query
+
+**QueryMsg**
+
+```rust
+enum QueryMsg {
+    #[returns(DaoInfoResponse)]
+    DaoInfo,
+    #[returns(MemberInfoResponse)]
+    MemberInfo(QueryMemberInfoMsg),
+    #[returns(AssetWhitelistResponse)]
+    AssetWhitelist,
+    #[returns(ProposalsResponse)]
+    Proposals(PollsParams),
+    #[returns(PollStatusResponse)]
+    PollStatus(PollStatusParams),
+    #[returns(PollVoterResponse)]
+    PollVoter(PollVoterParams),
+    #[returns(PollVotersResponse)]
+    PollVoters(PollVotersParams),
+    #[returns(ClaimsResponse)]
+    Claims(ClaimsParams),
+    #[returns(ClaimsResponse)]
+    ReleasableClaims(ClaimsParams),
+}
+```
+
+**DaoInfoResponse**
+
+- **dao_membership_contract**: contract that is used to calculate DAO membership
+- **dao_code_version**: version of the Enterprise code that the DAO is currently running
+
+```rust
+struct DaoInfoResponse {
+    pub metadata: DaoMetadata,
+    pub gov_config: DaoGovConfig,
+    pub dao_type: DaoType,
+    pub dao_membership_contract: Addr,
+    pub dao_code_version: Uint64,
+}
+```
+
+**QueryMemberInfoMsg**
+
+- member_address: address whose membership is to be checked
+
+```rust
+struct QueryMemberInfoMsg {
+    member_address: String,
+}
+```
+
+**MemberInfoResponse**
+
+- **voting_power**: weight of the requested address in the DAO; returns 0 if the address is not a member of the DAO. E.g. voting power of 0.31 means that the member holds 31% of available votes.
+
+```rust
+struct MemberInfoResponse {
+    pub voting_power: Decimal,
+}
+```
+
+**AssetWhitelistResponse**
+
+```rust
+struct AssetWhitelistResponse {
+    pub assets: Vec<AssetInfo>,
+}
+```
+
+**PollsParams**
+
+- **filter**: Optional poll status to use to filter polls by.
+
+```rust
+struct PollsParams {
+    pub filter: Option<PollStatusFilter>,
+    pub pagination: Pagination<Uint64>,
+}
+
+enum PollStatusFilter {
+    InProgress,
+    Passed,
+    Rejected,
+}
+
+struct Pagination<PK> {
+    pub start_at: Option<PK>,
+    pub end_at: Option<PK>,
+    pub limit: Option<u64>,
+    pub order_by: Option<Order>,
+}
+
+enum Order {
+    #[serde(alias = "asc")]
+    Ascending,
+    #[serde(alias = "dsc")]
+    Descending,
+}
+```
+
+**ProposalsResponse**
+
+```rust
+struct ProposalsResponse {
+    pub proposals: Vec<Proposal>,
+}
+```
+
+**PollStatusParams**
+
+```rust
+struct PollStatusParams {
+    pub poll_id: Uint64,
+}
+```
+
+**PollStatusResponse**
+
+- **results**: Total vote-count (value) for each outcome (key).
+
+```rust
+struct PollStatusResponse {
+    pub status: PollStatus,
+    pub ends_at: Timestamp,
+
+    pub results: BTreeMap<u8, u128>,
+}
+```
+
+**PollVoterParams**
+
+```rust
+struct PollVoterParams {
+    pub poll_id: Uint64,
+    pub voter_addr: String,
+}
+```
+
+**PollVoterResponse**
+
+```rust
+struct PollVoterResponse {
+    pub vote: Option<Vote>,
+}
+
+struct Vote {
+    pub poll_id: PollId,
+    pub voter: Addr,
+    /// The outcome voted for, 0-indexed.
+    pub outcome: u8,
+    /// Number of votes on the outcome.
+    pub amount: u128,
+}
+```
