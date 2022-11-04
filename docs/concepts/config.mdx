@@ -42,15 +42,15 @@ In addition to the parameters above, all DAOs require the following governance p
 The percentage of yes votes required to pass a proposal. 
 
 $$
-\frac{Number\,of\,yes\,votes}{Total\,votes} \ge Threshold
+\frac{Number\,of\,Yes\,votes}{Yes\, + No\,votes} \ge Threshold
 $$
 
 #### Quorum 
 
-The minimum number of tokens that need to vote for an election to be valid, expressed as a percentage of total staked token supply. Proposals that don't meet quorum fail, regardless of the vote outcome. 
+The minimum number of staked tokens, NFTs, or [multisig votes](#weight-and-threshold) that need to vote for an election to be valid, expressed as a percentage of total staked token supply. Proposals that don't meet quorum fail, regardless of the vote outcome. 
 
 $$
-\frac{Number\,of\,yes\,votes + no\,votes}{Total\,votes} \ge Quorum
+\frac{Number\,of\,Yes\,votes + No\,votes + Abstain\,votes}{Total\,possible\,votes} \ge Quorum
 $$
 
 #### Unlocking period 
@@ -122,7 +122,7 @@ The address for the NFT minter contract. Enterprise does not supply an NFT minti
 
 <Admonition type="tip" title="Using an existing NFT collection">
 
-You can make a DAO around an existing NFT collection by inputting the NFT address of the existing collection. Anyone in posession of the NFTs in that collection can be a member of the DAO. 
+You can make a DAO around an existing NFT collection by inputting the NFT address of the existing collection. Anyone in possession of the NFTs in that collection can be a member of the DAO. 
 
 </Admonition>
 
@@ -147,7 +147,7 @@ To mint the new DAOs token, you must specify an address to send the token to, an
 
 <Admonition type="tip" title="Using an existing Token">
 
-You can make a DAO around an existing token by inputting the existing token address. Anyone in posession of the existing token can be a member of the DAO.
+You can make a DAO around an existing token by inputting the existing token address. Anyone in possession of the existing token can be a member of the DAO.
 
 </Admonition>
 
@@ -169,5 +169,6 @@ The name of your project.
 
 ## Updating configurations
 
-General Parameters of a DAO can be updated by creating and passing a [DAO configuration proposal](./governance.mdx#dao-configuration-proposals).
+The General Parameters of a DAO can be updated by creating and passing a [DAO configuration proposal](./governance.mdx#dao-configuration-proposals).
+
 
