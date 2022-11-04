@@ -78,6 +78,11 @@ module.exports = async function config() {
           minHeadingLevel: 2,
           maxHeadingLevel: 4,
         },
+        colorMode: {
+          defaultMode: 'dark',
+          disableSwitch: true,
+          respectPrefersColorScheme: false,
+        },
         navbar: {
           title: "Enterprise Docs",
           //logo: {
