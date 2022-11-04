@@ -57,22 +57,6 @@ module.exports = async function config() {
           },
         }),
       ],
-      ["docusaurus-plugin-matomo", {}],
-      [
-        "redocusaurus",
-        {
-          specs: [
-            {
-              id: "complete",
-              spec: "https://phoenix-lcd.terra.dev/swagger/swagger.yaml",
-              route: "/api/",
-            },
-          ],
-          theme: {
-            primaryColor: "#1890ff",
-          },
-        },
-      ],
     ],
     themes: ["mdx-v2"],
     themeConfig:
@@ -90,6 +74,10 @@ module.exports = async function config() {
           indexName: 'terra-project',
           contextualSearch: true,
         },
+        tableOfContents: {
+          minHeadingLevel: 2,
+          maxHeadingLevel: 4,
+        },
         navbar: {
           title: "Enterprise Docs",
           //logo: {
@@ -99,9 +87,9 @@ module.exports = async function config() {
           //},
           items: [
             {
-              href: "https://terra.money", //front-end URL
+              href: "https://enterprise-main.enterprise-protocol-app.pages.dev/#/", //front-end URL
               position: "right",
-              label: "terra.money",
+              label: "Enterprise App",
               className: "header-terra-link",
               "aria-label": "Terra Money",
             },
@@ -117,12 +105,6 @@ module.exports = async function config() {
         prism: {
           theme: lightCodeTheme,
           darkTheme: darkCodeTheme,
-        },
-        matomo: {
-          matomoUrl: "https://terradocs.matomo.cloud/",
-          siteId: "2",
-          phpLoader: "matomo.php",
-          jsLoader: "matomo.js",
         },
       }),
       stylesheets: [
