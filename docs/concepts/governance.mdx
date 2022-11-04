@@ -8,7 +8,7 @@ sidebar_position: 2
 
 DAO members use proposals to decide changes or actions of the DAO. These proposals can be to spend the treasury, change the configuration of the DAO, or decide the general direction of the DAO's future. After creating a proposal, DAO members can vote on whether to pass or fail the proposal. 
 
-There are two main proposal types: DAO configuraiton proposals and Text proposals. 
+There are two main proposal types: DAO configuration proposals and Text proposals. 
 
 ### DAO configuration proposals
 
@@ -20,7 +20,7 @@ For general proposals, such as directional changes or to gain consensus over an 
 
 ## Staking
 
-In order to ensure the long-term stability of a DAO, and to prevent against malicious governance attacks, DAO members must stake their tokens or NFTs before they can vote with them. Staking in a DAO means you agree to lock your tokens or NFTs for a period of time. During the staking period, users cannot trade or sell their tokens or NFTs. 
+In order to ensure the long-term stability of a DAO, and to prevent malicious governance attacks, DAO members must stake their tokens or NFTs before they can vote with them. Staking in a DAO means you agree to lock your tokens or NFTs for a period of time. During the staking period, users cannot trade or sell their tokens or NFTs. 
 
 Users can unstake their tokens at any time. Once a user has unstaked their tokens, the unstaking period begins. The unstaking staking period length is determined by the DAO configuration. After the unstaking period ends, users can claim their tokens or NFTs. 
 
@@ -32,7 +32,7 @@ Once a proposal is created, it enters the voting period. Voting is done by DAO m
 
 ## Governance parameters
 
-Governance parameters are outlined in the DAO configuration during creation of the DAO. All DAOs have the following governance parameters:
+Governance parameters are outlined in the DAO configuration during the creation of the DAO. All DAOs have the following governance parameters:
 
 {/* This section is duplicated in config.mdx It must be updated in that location as well */}
 
@@ -40,9 +40,17 @@ Governance parameters are outlined in the DAO configuration during creation of t
 
 The percentage of yes votes required to pass a proposal. 
 
+$$
+\frac{Number\,of\,Yes\,votes}{Yes\, + No\,votes} \ge Threshold
+$$
+
 #### Quorum 
 
-The minimum number of tokens that need to vote for an election to be valid, expressed as a percentage of total staked token supply. Proposals that don't meet quorum fail, regardless of the vote outcome. 
+The minimum number of staked tokens, NFTs, or [multisig votes](./concepts.mdx#weight-and-threshold) that need to vote for an election to be valid, expressed as a percentage of the total staked token supply. Proposals that don't meet quorum fail, regardless of the vote outcome. 
+
+$$
+\frac{Number\,of\,Yes\,votes + No\,votes + Abstain\,votes}{Total\,possible\,votes} \ge Quorum
+$$
 
 #### Unlocking period 
 
@@ -51,3 +59,4 @@ The period of time it takes for a staked token to become unstaked. Tokens in the
 #### Vote duration
 
 The period of time during which a user can vote on a proposal. When a proposal is created, the vote duration starts. Once the vote duration is reached, the votes are tallied and the proposal either passes or fails. No votes can be cast after the voting period. 
+
