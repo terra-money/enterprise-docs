@@ -41,9 +41,17 @@ In addition to the parameters above, all DAOs require the following governance p
 
 The percentage of yes votes required to pass a proposal. 
 
+$$
+\frac{Number\,of\,yes\,votes}{Total\,votes} \ge Threshold
+$$
+
 #### Quorum 
 
 The minimum number of tokens that need to vote for an election to be valid, expressed as a percentage of total staked token supply. Proposals that don't meet quorum fail, regardless of the vote outcome. 
+
+$$
+\frac{Number\,of\,yes\,votes + no\,votes}{Total\,votes} \ge Quorum
+$$
 
 #### Unlocking period 
 
@@ -61,9 +69,39 @@ Different DAOs will require specific parameters according to the DAO's type.
 
 In addition to the [general parameters](#general-parameters), multisig DAOs contain the following specific parameter.
 
-#### Wallet address and weight
+#### Weight and threshold
 
-When creating a multisig DAO, each owner's wallet address is input along with a weight. The weight specifies the signature power of a wallet. A wallet with a weight of 20% has twice as much as a wallet with a 10% weight. Transactions are considered fully signed when the combined weight of the signers is greater than or equal to 100. 
+When creating a multisig DAO, each owner's wallet address is input along with a weight. The weight specifies the voting power of a wallet. A wallet with a weight of _`20`_ has twice as much voting power as a wallet with a weight of _`10`_. You can think of weights as the number of votes given to a wallet. Transactions are considered fully signed and will pass when the combined weight of the signers is greater than the threshold percentage of the total weights.
+
+$$
+\frac{Combined\,weight\,of\,signed\,members}{Total\,weight\,of\,all\,members} \ge Threshold
+$$
+
+**Example**:
+
+A multisig DAO creates a transaction proposal. The multisig has 5 members and a threshold of 66%:
+
+- _`wallet1 weight=30`_
+- _`wallet2 weight=10`_
+- _`wallet3 weight=15`_
+- _`wallet4 weight=25`_
+- _`wallet5 weight=20`_
+
+In this example, the _`total_weight`_ is _`100`_.
+To pass, the wallets that vote to sign would need a combined weight greater than _`66`_.
+
+If wallets 1-4 vote by signing the proposed transaction, their combined weight would be _`80`_, and the proposal would pass. 
+
+$$
+\frac{80}{100} \ge 66\%
+$$
+
+<Admonition type="tip" title="Non-voting members">
+
+A wallet with a weight of `0` is still considered a member of a DAO, but they do not have the right to vote on proposals. 
+
+</Admonition>
+
 
 ### NFT DAO parameters
 
