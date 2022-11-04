@@ -2,7 +2,11 @@
 sidebar_position: 2
 ---
 
+import Admonition from '@theme/Admonition';
+
 # Create an NFT Community DAO
+
+Follow the steps below to [create a new NFT Community DAO](#create-a-new-nft-community-dao) or [create an NFT Community DAO using an existing NFT contract](#create-an-nft-dao-using-an-existing-nft-contract). For more info on NFT Community DAOs, visit the [concepts page](../concepts/about.mdx#nft-community-daos).
 
 ## Prerequisites
 
@@ -20,6 +24,8 @@ Before you can create an NFT DAO, make sure you have completed the following:
 
 3. Select **Terra Station Wallet**. 
 
+4. If needed, click **approve** in the Terra Station extension. 
+
 ## Create a new NFT Community DAO
 
 1. Click on the plus sign on the left side of the screen and select **NFT Community DAO**. 
@@ -29,6 +35,36 @@ Before you can create an NFT DAO, make sure you have completed the following:
 3. Enter your NFT name, NFT symbol, and provide an address for your NFT minter. Click **Next**.
 
 4. Define your threshold, quorum, unlocking period, and vote duration parameters. Click **Next**.
+
+<Admonition type="caution" title="Updating parameters">
+
+After creation, [general parameters](../concepts/config.mdx#general-parameters) can only be updated using a [DAO configuration proposal](../concepts/governance.mdx#dao-configuration-proposals). 
+
+</Admonition>
+
+5. Enter any social media links you wish to add. Click **Next**.
+
+6. Input the password for your Terra Station browser extension wallet and click **Post**.
+
+Congratulations! You've just made an NFT Community DAO!
+
+## Create an NFT Community DAO using an existing NFT contract
+
+Follow the steps below to make a DAO using an existing [CW-721 NFT contract address](https://github.com/CosmWasm/cw-nfts/blob/main/packages/cw721/README.md).
+
+1. Click on the plus sign on the left side of the screen and select **NFT Community DAO**. 
+
+2. Input a name for your DAO and upload a logo. Click **Next**.
+
+3. Select **Yes, find my existing NFT** and enter the NFT contract address. Click **Next**.
+
+4. Define your threshold, quorum, unlocking period, and vote duration parameters. Click **Next**.
+
+<Admonition type="caution" title="Updating parameters">
+
+After creation, [general parameters](../concepts/config.mdx#general-parameters) can only be updated using a [DAO configuration proposal](../concepts/governance.mdx#dao-configuration-proposals). 
+
+</Admonition>
 
 5. Enter any social media links you wish to add. Click **Next**.
 
