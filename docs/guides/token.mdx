@@ -2,7 +2,11 @@
 sidebar_position: 3
 ---
 
+import Admonition from '@theme/Admonition';
+
 # Create a Community token DAO
+
+Follow the steps below to [create a new Community Token DAO](#create-a-new-community-token-dao) or [create a Community Token DAO using an existing token](#create-a-community-token-dao-using-an-existing-token). For more info on Community Token DAOs, visit the [concepts page](../concepts/about.mdx#community-token-daos).
 
 ## Prerequisites
 
@@ -11,7 +15,6 @@ Before you can create a Community Token DAO, make sure you have completed the fo
 - Download Google Chrome
 - Install [the Terra Station Chrome Extension](https://docs.terra.money/learn/terra-station/Download/terra-station-extension)
 - At least two [Terra wallet addresses](https://docs.terra.money/learn/terra-station/Download/terra-station-extension#create-a-wallet)
-- An NFT minter address
 
 ## Connect your wallet to Enterprise
 
@@ -20,6 +23,8 @@ Before you can create a Community Token DAO, make sure you have completed the fo
 2. To connect your wallet to Enterprise, click the wallet icon in the upper right corner of the screen. 
 
 3. Select **Terra Station Wallet**. 
+
+4. If needed, click **approve** in the Terra Station extension. 
 
 ## Create a new Community Token DAO
 
@@ -34,6 +39,12 @@ Before you can create a Community Token DAO, make sure you have completed the fo
 5. Enter a token description, a token logo URL, the address of the marketing owner, and a project name. Click **Next**.
 
 6. Define your threshold, quorum, unlocking period, and vote duration parameters. Click **Next**.
+
+<Admonition type="caution" title="Updating parameters">
+
+After creation, [general parameters](../concepts/config.mdx#general-parameters) can only be updated using a [DAO configuration proposal](../concepts/governance.mdx#dao-configuration-proposals). 
+
+</Admonition>
 
 7. Enter any social media links you wish to add. Click **Next**.
 
@@ -52,6 +63,12 @@ Follow the steps below to make a DAO using an existing [CW-20 token contract add
 3. Select **Yes, find my existing token** and input your existing token contract address. Click **Next**. 
 
 4. Define your threshold, quorum, unlocking period, and vote duration parameters. Click **Next**.
+
+<Admonition type="caution" title="Updating parameters">
+
+After creation, [general parameters](../concepts/config.mdx#general-parameters) can only be updated using a [DAO configuration proposal](../concepts/governance.mdx#dao-configuration-proposals). 
+
+</Admonition>
 
 5. Enter any social media links you wish to add. Click **Next**.
 
