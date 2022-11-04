@@ -61,7 +61,7 @@ Different DAOs will require specific parameters according to the DAO's type.
 
 In addition to the [general parameters](#general-parameters), multisig DAOs contain the following specific parameter.
 
-#### Weights
+#### Wallet address and weight
 
 When creating a multisig DAO, each owner's wallet address is input along with a weight. The weight specifies the signature power of a wallet. A wallet with a weight of 20% has twice as much as a wallet with a 10% weight. Transactions are considered fully signed when the combined weight of the signers is greater than or equal to 100. 
 
@@ -84,7 +84,7 @@ The address for the NFT minter contract. Enterprise does not supply an NFT minti
 
 <Admonition type="tip" title="Using an existing NFT collection">
 
-If you want to make a DAO around an existing NFT collection, 
+You can make a DAO around an existing NFT collection by inputting the NFT address of the existing collection. Anyone in posession of the NFTs in that collection can be a member of the DAO. 
 
 </Admonition>
 
@@ -93,6 +93,41 @@ If you want to make a DAO around an existing NFT collection,
 
 In addition to the [general parameters](#general-parameters), Token Community DAOs contain the following specific parameters.
 
+#### Token Name
+The name of your new token. 
+
+#### Token Symbol
+A symbol for your new token. Usually a maximum of four characters. 
+
+#### Decimals
+
+The number of decimal places your token should be generated with. This defines the smallest possible unit of the token. For instance, a single decimal place will mean the smallest unit of your token will be `.1`. 
+
+#### Initial token distribution
+
+To mint the new DAOs token, you must specify an address to send the token to, and an amount of the token to mint and send. You can add multiple addresses and amounts. Once a DAO has been created, the original genesis distribution of the token cannot be changed. 
+
+<Admonition type="tip" title="Using an existing Token">
+
+You can make a DAO around an existing token by inputting the existing token address. Anyone in posession of the existing token can be a member of the DAO.
+
+</Admonition>
+
+#### Description
+
+A description of the token. 
+
+#### Logo URL
+
+A URL for the token's logo image. 
+
+#### Marketing Owner Address
+
+The wallet address of the marketing owner. 
+
+#### Project
+
+The name of your project. 
 
 ## Updating configurations
 
