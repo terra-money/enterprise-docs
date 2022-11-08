@@ -1,0 +1,239 @@
+---
+sidebar_position: 1
+---
+
+# Creatintg a DAO
+
+This section outlines the data structures for DAO creation. 
+
+## Metadata
+
+<CH.Scrollycoding>
+
+### DaoMetadata
+
+The _`DaoMetadata`_ contains the general information about the DAO, including the _`name`_, _`logo`_, and social media information. 
+```rust
+struct DaoMetadata {
+    pub name: String,
+    pub logo: Logo,
+    pub socials: DaoSocialData,
+}
+```
+---
+
+### Logo
+
+Defines a DAO’s logo. Currently, only URL images are supported. 
+
+```rust
+enum Logo {
+    Url(String),
+    None,
+}
+```
+---
+
+### DaoSocialData
+
+Defines the social media usernames for a DAO.
+
+```rust
+struct DaoSocialData {
+    pub github_username: Option<String>,
+    pub discord_username: Option<String>,
+    pub twitter_username: Option<String>,
+    pub telegram_username: Option<String>,
+}
+```
+
+</CH.Scrollycoding>
+
+
+## DAO creation
+
+<CH.Scrollycoding>
+
+### DaoType
+
+There are three types of DAO which can be created using Enterprise:
+
+- a CW20 Token DAO
+- a CW721 NFT DAO
+- a CW3 Multisig DAO
+
+```rust focus=1:6
+
+enum DaoType {
+    Token,
+    Nft,
+    Multisig,
+}
+
+enum DaoMembershipInfo {
+    New(NewDaoMembershipMsg),
+    Existing(ExistingDaoMembershipMsg),
+}
+
+```
+---
+
+### New or existing
+
+DAOs can either be created from scratch as _`New`_, or they can be imported as _`Existing`_ DAOs. 
+
+```rust focus=8:12
+
+```
+</CH.Scrollycoding>
+
+
+## Creating a new DAO
+
+<CH.Scrollycoding>
+
+### code_id and info
+
+When creating a new DAO, the appropriate on-chain [_`membership_contract_code_id`_](focus://3) of a contract must be specified (CW20 tokens, CW721 NFTs, CW3 multisigs), along with other necessary [membership information](focus://4:11) for the governance asset.
+
+
+```rust 
+
+struct NewDaoMembershipMsg {
+    pub membership_contract_code_id: u64,
+    pub membership_info: NewMembershipInfo,
+}
+
+enum NewMembershipInfo {
+    NewToken(NewTokenMembershipInfo),
+    NewNft(NewNftMembershipInfo),
+    NewMultisig(NewMultisigMembershipInfo),
+}
+
+
+```
+
+</CH.Scrollycoding>
+
+### New token
+
+<CH.Scrollycoding>
+
+_`NewTokenMembershipInfo`_
+is used to instantiate new DAO governance membership token. This information is similar to a CW20 token's instantiation info. 
+
+```rust 
+
+struct NewTokenMembershipInfo {
+    pub token_name: String,
+    pub token_symbol: String,
+    pub token_decimals: u8,
+    pub initial_token_balances: Vec<Cw20Coin>,
+    pub token_mint: Option<MinterResponse>,
+    pub token_marketing: Option<TokenMarketingInfo>,
+}
+
+struct MinterResponse {
+    pub minter: String,
+    pub cap: Option<Uint128>,
+}
+
+struct TokenMarketingInfo {
+    pub project: Option<String>,
+    pub description: Option<String>,
+    pub marketing_owner: Option<String>,
+    pub logo_url: Option<String>,
+}
+
+```
+---
+
+
+A new Community Token DAO must specify:
+
+- A name.
+- A token symbol (typically 3-4 letters).
+- The number of decimal places a token can be divided into.
+- A list of addresses and amount pairs that are the initial holders of the token. 
+
+```rust focus=2:6
+
+```
+
+---
+#### Optional minting info
+
+- Addresses of accounts that can mint the token and its maximum supply. 
+The _`cap`_ is a hard cap on the total supply that can be achieved by minting. This refers to the _`total_supply`_. If no cap is specified, the supply can be unlimited. 
+
+```rust focus=2,7,11:14
+
+```
+
+---
+
+- Marketing information about the Token's project and/or owner. 
+
+```rust focus=2,8,16:21
+
+```
+
+</CH.Scrollycoding>
+
+### New NFT
+
+<CH.Scrollycoding>
+
+New NFT membership information contains:
+- A name.
+- A Symbol.
+- An optional address of the minter who can create the NFTs. 
+
+```rust
+struct NewNftMembershipInfo {
+    pub nft_name: String,
+    pub nft_symbol: String,
+		/// optional
+    pub minter: Option<String>,
+}
+```
+
+</CH.Scrollycoding>
+
+### New multisig
+
+<CH.Scrollycoding>
+
+New multisig DAOs require the addresses and weight of all the multisig members. To learn more about multisig weights, visit the [Configurations and parameters page](../concepts/config.mdx#weight-and-threshold)
+
+```rust
+struct NewMultisigMembershipInfo {
+    pub multisig_members: Vec<MultisigMember>,
+}
+
+struct MultisigMember {
+    pub address: String,
+    pub weight: Uint64,
+}
+```
+
+</CH.Scrollycoding>
+
+## Importing an existing DAO
+
+<CH.Scrollycoding>
+
+
+To import an existing DAO, you must specify the contract address of an existing membership contract and DAO governance type.
+
+```rust
+
+struct ExistingDaoMembershipMsg {
+    pub dao_type: DaoType,
+    pub membership_contract_addr: String,
+}
+
+```
+
+</CH.Scrollycoding>
+
