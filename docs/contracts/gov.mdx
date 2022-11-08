@@ -1,0 +1,212 @@
+---
+sidebar_position: 2
+---
+
+# Governance 
+
+This section outlines the data structures for DAO governance. 
+
+## DaoGovConfig
+
+The configurations for a DAO’s governance-related activities, such as creating and executing proposals, are defined in the following sections. For more information on governance configuration parameters, visit the [Governance and staking](../concepts/governance.mdx#governance-parameters) page.
+
+<CH.Scrollycoding>
+
+### Quorum
+
+The minimum number of staked tokens, NFTs, or [multisig votes](../concepts/config.mdx#weight-and-threshold) that need to vote for an election to be valid, expressed as a percentage of the total staked token supply. Proposals that don't meet quorum fail, regardless of the vote outcome. 
+
+```rust Rust focus=1:2
+struct DaoGovConfig {
+    pub quorum: Decimal,
+    pub threshold: Decimal,
+    pub vote_duration: u64,
+    pub unlocking_period: Duration,
+}
+```
+
+---
+
+### Threshold
+
+The percentage of yes votes required to pass a proposal. 
+
+```rust Rust focus=3
+
+```
+
+---
+
+### Vote duration
+
+The period of time (expressed in seconds) during which a user can vote on a proposal. When a proposal is created, the vote duration starts. Once the vote duration is reached, the votes are tallied and the proposal either passes or fails. No votes can be cast after the voting period. 
+
+```rust Rust focus=4
+
+```
+
+---
+
+### Unlocking period
+
+The period of time (either in seconds or blocks) it takes for a staked token to become unstaked. Tokens in the unstaking phase cannot be used to cast a vote. Once the unstaking period is over, the owner can claim them. 
+
+```rust Rust focus=5
+
+```
+
+</CH.Scrollycoding>
+
+## Proposals
+
+<CH.Scrollycoding>
+
+Proposals are submited by DAO governance members and are voted on by staked asset holders or multisig members of a DAO. 
+
+```rust Rust
+type ProposalId = u64;
+
+struct Proposal {
+		pub id: ProposalId,
+    pub title: String,
+    pub description: String,
+    pub status: ProposalStatus,
+    pub expires: Expiration,
+    pub proposal_actions: Vec<ProposalAction>,
+}
+
+enum ProposalStatus {
+    InProgress,
+    Passed,
+    Rejected,
+    Executed,
+}
+```
+---
+
+### Status
+
+1. When a proposal is successfully submitted, it enters the _`InProgress`_ state. 
+
+2. If a proposal fails to meet quorum or fails to get enough "yes" votes to meet the threshold, it becomes _`Rejected`_. 
+
+3. When a proposal meets quorum and has a threshold percentage of "yes" votes by the end of the voting period, it becomes _`Passed`_
+
+4. After passing, the successful proposal can become _`Executed`_. 
+
+```rust Rust focus=12:17
+
+```
+
+</CH.Scrollycoding>
+
+## Proposal actions
+
+<CH.Scrollycoding>
+
+This section defines the governance actions available when creating a governance proposal. 
+
+
+```rust Rust
+enum ProposalAction {
+    UpdateMetadata(UpdateMetadataMsg),
+    UpdateGovConfig(UpdateGovConfigMsg),
+    UpdateAssetWhitelist(UpdateAssetWhitelistMsg),
+		UpdateNftWhitelist(UpdateNftWhitelistMsg),
+    RequestFundingFromDao(RequestFundingFromDaoMsg),
+}
+
+---
+
+### UpdateMetadataMsg
+
+```rust Rust
+struct UpdateMetadataMsg {
+    pub name: Option<String>,
+    pub logo: Option<Logo>,
+    pub github: Option<Option<String>>,
+    pub discord: Option<Option<String>>,
+    pub twitter: Option<Option<String>>,
+    pub telegram: Option<Option<String>>,
+}
+```
+
+---
+
+### UpdateGovConfigMsg 
+
+Updates any of the four [governance parameters in the _`DaoGovConfig`_](#daogovconfig).
+
+```rust Rust
+struct UpdateGovConfigMsg {
+    pub quorum: Option<Decimal>,
+    pub threshold: Option<Decimal>,
+    pub voting_duration: Option<Uint64>,
+    pub unlocking_period: Option<Duration>,
+}
+
+```
+
+---
+
+### UpdateAssetWhitelistMsg
+
+Updates the asset whitelist by adding or removing assets.
+
+```rust Rust
+struct UpdateAssetWhitelistMsg {
+    /// New assets to add to the whitelist. Will ignore assets that are already whitelisted.
+    pub add: Option<Vec<AssetInfo>>,
+    /// Assets to remove from the whitelist. Will ignore assets that are not already whitelisted.
+    pub remove: Option<Vec<AssetInfo>>,
+}
+
+```
+
+---
+
+### UpdateNftWhitelistMsg
+
+Updates the NFT whitelist by addiing or removing assets. 
+
+```rust Rust
+struct UpdateNftWhitelistMsg {
+    /// New NFTs to add to the whitelist. Will ignore NFTs that are already whitelisted.
+    pub add: Option<Vec<Addr>>,
+    /// NFTs to remove from the whitelist. Will ignore NFTs that are not already whitelisted.
+    pub remove: Option<Vec<Addr>>,
+}
+```
+
+---
+
+### RequestFundingFromDaoMsg
+
+This message is used to request funding from a DAO. Proposers must specify a recipient address along with the asset and amount requested. 
+
+```rust Rust
+struct RequestFundingFromDaoMsg {
+    pub recipient: String,
+		/// CW assets requested as funding
+    pub assets: Vec<Asset>,
+}
+```
+
+---
+
+## Expiration
+
+Expiration defines the height or time at which a governance proposal will expire. 
+
+```rust Rust
+enum Expiration {
+    /// AtHeight will expire when `env.block.height` >= height
+    AtHeight(u64),
+    /// AtTime will expire when `env.block.time` >= time
+    AtTime(Timestamp),
+    /// Never will never expire. Used to express the empty variant
+    Never {},
+}
+```
+
+</CH.Scrollycoding>
