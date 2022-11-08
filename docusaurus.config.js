@@ -10,7 +10,7 @@ module.exports = async function config() {
   return {
     title: "Enterprise Docs",
     tagline: "The official docs for Enterprise",
-    url: "https://docs.terra.money",
+    url: "https://docs.enterprise.money",
     baseUrl: "/",
     onBrokenLinks: "throw",
     onBrokenMarkdownLinks: "warn",
@@ -86,7 +86,7 @@ module.exports = async function config() {
         navbar: {
           title: "Enterprise Docs",
           //logo: {
-            //alt: "Terra Docs",
+            //alt: "Enterprise Docs",
             //src: "img/logo_light.svg",
             //srcDark: "img/logo_dark.svg",
           //},
