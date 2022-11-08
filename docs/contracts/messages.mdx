@@ -4,261 +4,77 @@ sidebar_position: 3
 
 # Messages
 
+## InstantiateMsg
 
-## Objects
+<CH.Scrollycoding>
 
-**DaoMetadata**
+The _`InstantiateMsg`_ contains all the necessary info for creating a DAO, including the [DAO metadata](./create.mdx#daometadata), [governance config](./create.mdx#daogovconfig), [creation contract address](./create.mdx#dao-creation), [membership info](./create.mdx#code_id-and-info), and whitelists. 
 
-```rust
-struct DaoMetadata {
-    pub name: String,
-    pub logo: Logo,
-    pub socials: DaoSocialData,
-}
-```
 
-**Logo**
-
-Defines DAO’s logo. Currently supports URL images, and no logo.
-
-Will likely be expanded to include on-chain images.
-
-```rust
-enum Logo {
-    Url(String),
-    None,
-}
-```
-
-**DaoSocialData**
-
-```rust
-struct DaoSocialData {
-    pub github_url: Option<String>,
-    pub discord_url: Option<String>,
-    pub twitter_url: Option<String>,
-    pub telegram_url: Option<String>,
-}
-```
-
-**DaoGovConfig**
-
-Configuration for DAO’s governance-related activities, like creating and executing proposals.
-
-```rust
-struct DaoGovConfig {
-		/// Portion of total available votes cast in a proposal to consider it valid
-		/// e.g. quorum of 30% means that 30% of all available votes have to be cast
-		/// in the proposal (otherwise it fails on expiration)
-    pub quorum: Decimal,
-		/// Portion of votes assigned to a single option from all the votes cast in
-		/// the given proposal required to determine the 'winning' option
-		/// e.g. 51% threshold means that an option has to have at least 51% of 
-		/// the cast votes to win
-    pub threshold: Decimal,
-    /// Duration of each proposal, proposals fail if quorum and threshold are 
-		/// not reached before this time runs out. Expressed in seconds.
-    pub vote_duration: u64,
-    /// Duration, either in seconds or blocks, that has to pass between 
-		/// unstaking governance (membership) assets and claiming them back
-    pub unlocking_period: Duration,
-}
-```
-
-**DaoMembershipInfo**
-
-Note that every type of DAO governance (CW20 token, CW721 NFT, CW3 multisig) can be either imported or created new.
-
-When creating new ones, on-chain code_id of appropriate contract has to be specified, along with other necessary info for the governance asset.
-
-When importing old ones, it is sufficient to specify governance contract address and DAO governance type.
-
-```rust
-enum DaoType {
-    Token,
-    Nft,
-    Multisig,
-}
-
-enum DaoMembershipInfo {
-    New(NewDaoMembershipMsg),
-    Existing(ExistingDaoMembershipMsg),
-}
-
-struct NewDaoMembershipMsg {
-		/// code_id that will be used to instantiate new DAO membership contract
-		/// e.g. code_id for CW20 token, CW721 NFT, or CW3 multisig
-    pub membership_contract_code_id: u64,
-    pub membership_info: NewMembershipInfo,
-}
-
-enum NewMembershipInfo {
-    NewToken(NewTokenMembershipInfo),
-    NewNft(NewNftMembershipInfo),
-    NewMultisig(NewMultisigMembershipInfo),
-}
-
-/// Used to import a DAO
-struct ExistingDaoMembershipMsg {
-    pub dao_type: DaoType,
-		/// address of an existing membership contract we’re importing
-    pub membership_contract_addr: String,
-}
-
-/// info used to instantiate new membership (governance) token
-/// almost matches CW20 instantiation info
-struct NewTokenMembershipInfo {
-    pub token_name: String,
-    pub token_symbol: String,
-    pub token_decimals: u8,
-		/// list of address/amount pairs that are initial holders of the token
-    pub initial_token_balances: Vec<Cw20Coin>,
-		/// optional information on who can mint the token, and its maximum supply
-    pub token_mint: Option<MinterResponse>,
-		/// optional information about the token's project and/or owner
-    pub token_marketing: Option<TokenMarketingInfo>,
-}
-
-/// information on who can mint the token, and its maximum supply
-struct MinterResponse {
-		/// address that can mint the token
-    pub minter: String,
-    /// cap is a hard cap on total supply that can be achieved by minting.
-    /// Note that this refers to total_supply.
-    /// If None, there is unlimited cap.
-    pub cap: Option<Uint128>,
-}
-
-/// information about the token's project and/or owner
-struct TokenMarketingInfo {
-    pub project: Option<String>,
-    pub description: Option<String>,
-    pub marketing_owner: Option<String>,
-    pub logo_url: Option<String>,
-}
-
-struct NewNftMembershipInfo {
-    pub nft_name: String,
-    pub nft_symbol: String,
-		/// optional address of the minter who can create new NFTs
-    pub minter: Option<String>,
-}
-
-struct NewMultisigMembershipInfo {
-    pub multisig_members: Vec<MultisigMember>,
-    pub threshold: Threshold,
-    pub max_voting_period: Duration,
-}
-
-enum Threshold {
-    /// Declares that a fixed weight of Yes votes is needed to pass.
-    /// See `ThresholdResponse.AbsoluteCount` in the cw3 spec for details.
-    AbsoluteCount { weight: u64 },
-
-    /// Declares a percentage of the total weight that must cast Yes votes in order for
-    /// a proposal to pass.
-    /// See `ThresholdResponse.AbsolutePercentage` in the cw3 spec for details.
-    AbsolutePercentage { percentage: Decimal },
-
-    /// Declares a `quorum` of the total votes that must participate in the election in order
-    /// for the vote to be considered at all.
-    /// See `ThresholdResponse.ThresholdQuorum` in the cw3 spec for details.
-    ThresholdQuorum { threshold: Decimal, quorum: Decimal },
-}
-
-struct MultisigMember {
-    pub address: String,
-    pub weight: Uint64,
-}
-```
-
-**Proposal**
-
-```rust
-struct Proposal {
-    pub poll: Poll,
-    pub proposal_actions: Vec<ProposalAction>,
-}
-```
-
-**ProposalAction**
-
-```rust
-enum ProposalAction {
-    UpdateMetadata(UpdateMetadataMsg),
-    UpdateGovConfig(UpdateGovConfigMsg),
-    UpdateAssetWhitelist(UpdateAssetWhitelistMsg),
-    RequestFundingFromDao(RequestFundingFromDaoMsg),
-}
-
-struct UpdateMetadataMsg {
-    pub name: Option<String>,
-    pub logo: Option<Logo>,
-    pub github: Option<Option<String>>,
-    pub discord: Option<Option<String>>,
-    pub twitter: Option<Option<String>>,
-    pub telegram: Option<Option<String>>,
-}
-
-struct UpdateGovConfigMsg {
-    pub quorum: Option<Decimal>,
-    pub threshold: Option<Decimal>,
-    pub voting_duration: Option<Uint64>,
-    pub unlocking_period: Option<Duration>,
-}
-
-struct UpdateAssetWhitelistMsg {
-    /// New assets to add to the whitelist. Will ignore assets that are already whitelisted.
-    pub add: Option<Vec<AssetInfo>>,
-    /// Assets to remove from the whitelist. Will ignore assets that are not already whitelisted.
-    pub remove: Option<Vec<AssetInfo>>,
-}
-
-struct RequestFundingFromDaoMsg {
-    pub recipient: String,
-		/// CW assets requested as funding
-    pub assets: Vec<Asset>,
-}
-```
-
-## Instantiate
-
-**Instantiate**
-
-- **asset_whitelist**: assets that are allowed to show in DAO’s treasury. Helps prevent spam of the UI by users creating random CW20 or other tokens and sending to DAO
-
-```rust
+```rust Rust
 struct InstantiateMsg {
 		pub dao_metadata: DaoMetadata,
     pub dao_gov_config: DaoGovConfig,
     pub dao_membership_info: DaoMembershipInfo,
-		/// Assets that are allowed to show in DAO’s treasury
-		/// Helps prevent spam of the UI by users creating random CW20 or 
-		/// other tokens and sending to DAO
+    pub enterprise_factory_contract: String,
     pub asset_whitelist: Option<Vec<AssetInfo>>,
+    pub nft_whitelist: Option<Vec<Addr>>,
 }
 ```
 
-## Execute
+---
 
-**ExecuteMsg**
+The _`enterprise_factory_contract`_ refers to the address of enterprise-factory contract that is creating the DAO.
 
-```rust
+```rust Rust focus=5
+
+```
+
+---
+
+### asset_whitelist
+
+Token assets that are allowed to show in DAO’s treasury. A whitelist helps prevent spam by users creating and sending random tokens to the DAO. 
+
+```rust Rust focus=6
+
+```
+---
+
+### nft_whitelist
+
+The NFT assets that are allowed to be shown in DAO’s treasury. 
+
+```rust Rust focus=7
+
+```
+
+</CH.Scrollycoding>
+
+## Execute messages
+
+<CH.Scrollycoding>
+
+The following section outlines the messages that can be executed with Enterprise. 
+
+```rust Rust
 enum ExecuteMsg {
 		CreateProposal(CreateProposalMsg),
+		CastVote(CastVoteMsg),
     ExecuteProposal(ExecuteProposalMsg),
     Unstake(UnstakeMsg),
-    Claim,
+    Claim {},
     ReceiveCw20(Cw20ReceiveMsg),
     ReceiveCw721(Cw721ReceiveMsg),
 }
 ```
+---
 
-**CreateProposalMsg**
+### CreateProposalMsg
 
-- **proposal_actions**: Actions to be executed (in order they were received in), if the poll passes.
+This message creates a proposal using a title, descrition, and the [proposal_actions](./gov.mdx#proposal-actions). If a proposal passes, actions are executed in the order recieved. 
 
-```rust
+```rust Rust
 struct CreateProposalMsg {
     pub title: String,
     pub description: Option<String>,
@@ -266,17 +82,50 @@ struct CreateProposalMsg {
 }
 ```
 
-**ExecuteProposalMsg**
+---
 
-```rust
+### CastVoteMsg
+
+Used to cast a vote for a proposal  in the voting period using a proposal id and an outcome. The possible choices are:
+
+- _`Yes`_: in favor
+- _`No`_: not in favor
+- _`Abstain`_: a vote that counts toward meeting quorum, but is neither for nor against. 
+- _`Veto`_: vetoes the proposal. 
+
+
+```rust Rust
+struct CastVoteMsg {
+    pub proposal_id: ProposalId,
+    pub outcome: DefaultVoteOption,
+}
+
+enum DefaultVoteOption {
+    Yes = 0,
+    No = 1,
+    Abstain = 2,
+		Veto = 3,
+}
+```
+---
+
+### ExecuteProposalMsg
+
+Used to execute a passed proposal. 
+
+```rust Rust
 struct ExecuteProposalMsg {
-    pub poll_id: PollId,
+    pub proposal_id: PollId,
 }
 ```
 
-**UnstakeMsg**
+---
 
-```rust
+### UnstakeMsg
+
+Used to unstake tokens or an NFT from governance staking. Users will have to claim their unstaked assets after the unstaking lockup period ends. 
+
+```rust Rust
 enum UnstakeMsg {
     Cw20(UnstakeCw20Msg),
     Cw721(UnstakeCw721Msg),
@@ -292,18 +141,30 @@ struct UnstakeCw721Msg {
 
 type NftTokenId = String;
 ```
+---
 
-**Claim**
+### Claim
 
-Executes a claim of all of sender’s assets that have been unstaked and their unlocking period has passed.
+Claims all assets available to the sender after they have unstaked and the unlocking period has passed. 
 
-**Hooks**
+```rust Rust focus=6
+pub enum ExecuteMsg {
+    CreateProposal(CreateProposalMsg),
+    CastVote(CastVoteMsg),
+    ExecuteProposal(ExecuteProposalMsg),
+    Unstake(UnstakeMsg),
+    Claim {},
+    Receive(Cw20ReceiveMsg),
+    ReceiveNft(Cw721ReceiveMsg),
+}
+```
+---
 
-Hook messages for receiving CW20 tokens and CW721 NFTs.
+### Hooks
 
-Used to receive assets that are going to be staked.
+These hook messages are used for receiving CW20 tokens and CW721 NFTs that are going to be staked.
 
-```rust
+```rust Rust
 enum Cw20HookMsg {
     Stake,
 }
@@ -313,3 +174,4 @@ enum Cw721HookMsg {
 }
 ```
 
+</CH.Scrollycoding>
