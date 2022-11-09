@@ -1,4 +1,4 @@
-# Enterprise Docs
+# Terra Docs
 
 ## Setup
 
