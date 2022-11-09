@@ -1,5 +1,12 @@
 const getStartedCards = [
   {
+    href: 'concepts/about.html',
+    lightSvg: '/img/icons/terrain.svg',
+    darkSvg: '/img/icons/dark/terrain.svg',
+    header: 'What is a DAO?',
+    summary: 'Learn about the different types of DAOs.'
+  },
+  {
     href: 'guides/multisig.html',
     lightSvg: '/img/icons/buildanapp01.svg',
     darkSvg: '/img/icons/dark/buildanapp01.svg',
@@ -33,13 +40,6 @@ const getStartedCards = [
     darkSvg: '/img/icons/dark/terrain.svg',
     header: 'Governance guide',
     summary: 'Learn how to create and vote on proposals'
-  },
-  {
-    href: 'concepts/about.html',
-    lightSvg: '/img/icons/terrain.svg',
-    darkSvg: '/img/icons/dark/terrain.svg',
-    header: 'What is a DAO?',
-    summary: 'Learn about the different types of DAOs.'
   }
 ]
 
