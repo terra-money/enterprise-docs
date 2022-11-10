@@ -4,7 +4,7 @@ sidebar_position: 4
 
 # Queries
 
-This section outlines the various query messages for Enterprise. 
+This section outlines the various query messages for Enterprise smart contracts. 
 
 <CH.Scrollycoding>
 
@@ -35,11 +35,11 @@ struct DaoInfoResponse {
 
 ## QueryMemberInfoMsg
 
-Returns the voting power or weight of a DAO member. 
+Returns the [voting power or weight](../concepts/governance.mdx#voting) of a DAO member. 
 
 - _`member_address`_: The address of a particular DAO member. 
 
-- _`voting_power`_: The weight of the requested DAO member expressed as a decimal. This query returns 0 if the address is not a member of the DAO. 
+- _`voting_power`_: The weight or number of votes given to the requested DAO member expressed as a decimal. This query returns 0 if the address is not a member of the DAO. 
 
 For example, a voting power of 0.31 means that the member holds 31% of available votes.
 
