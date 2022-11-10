@@ -8,7 +8,7 @@ const Copyright: React.FC = () => {
         <ThemedImage
           sources={{
             light:"/img/icons/terraform-labs.svg",
-            dark:"/img/Luna-color.svg"}}
+            dark:"/img/icons/terraform-labs.svg"}}
             height="40px"
         />
       </a>
