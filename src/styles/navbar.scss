@@ -3,7 +3,7 @@ $white-github: '/img/icons/links/whitegithub.svg';
 $white-terra: '/img/Terra-logo-grayscale.svg';
 $colorful-terra: '/img/BlueGreenTerra.svg';
 $small-colorful-terra: '/img/BlueGreenTerraSmall.svg';
-$white-luna: '/img/Luna-logo-white.svg';
+$white-luna: '/img/enterprise.svg';
 $colorful-luna: '/img/Luna-color.svg';
 $small-colorful-luna: '/img/Luna-color-small.svg';
 $white-arrow: '/img/ArrowWhite.svg';
@@ -265,7 +265,7 @@ $light-blue-arrow: '/img/ArrowLightBlue.svg';
   }
 
   .header-terra-link {
-    background-color: #459cf4;
+    background-color: #fb4e57;
 
     &::before {
       background-image: url($white-luna);
@@ -283,8 +283,8 @@ $light-blue-arrow: '/img/ArrowLightBlue.svg';
     &:hover {
       box-shadow: 3px 3px 6px rgba(150, 150, 150, 0.25);
       background-color: #000000;
-      box-shadow: inset 0 0 0 1.75px #459cf4;
-      color: #459cf4 !important;
+      box-shadow: inset 0 0 0 1.75px #f0bbd1;
+      color: #f0bbd1 !important;
     }
 
     @media (max-width: 550px) {
