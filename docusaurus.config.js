@@ -92,7 +92,7 @@ module.exports = async function config() {
           //},
           items: [
             {
-              href: "https://enterprise-main.enterprise-protocol-app.pages.dev/#/", //front-end URL
+              href: "https://enterprise-protocol-app.pages.dev/", //front-end URL
               position: "right",
               label: "Enterprise App",
               className: "header-terra-link",
