@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Creatintg a DAO
 
-This section outlines the data structures for DAO creation. 
+This section outlines the data structures for DAO creation. For more information on available messages, visit the [Messages page](./messages.mdx) 
 
 ## Metadata
 
@@ -56,11 +56,11 @@ struct DaoSocialData {
 
 ### DaoType
 
-There are three types of DAO which can be created using Enterprise:
+There are three types of DAOs which can be created using Enterprise:
 
-- a CW20 Token DAO
-- a CW721 NFT DAO
-- a CW3 Multisig DAO
+- a [CW20 Token DAO](../concepts/about.mdx#community-token-daos)
+- a [CW721 NFT DAO](../concepts/about.mdx#nft-community-daos)
+- a [CW3 Multisig DAO](../concepts/about.mdx#multisig-daos)
 
 ```rust focus=1:6
 
@@ -119,8 +119,7 @@ enum NewMembershipInfo {
 
 <CH.Scrollycoding>
 
-_`NewTokenMembershipInfo`_
-is used to instantiate new DAO governance membership token. This information is similar to a CW20 token's instantiation info. 
+_`NewTokenMembershipInfo`_ is used to instantiate a new DAO governance membership token. This information is similar to a CW20 token's instantiation info. 
 
 ```rust 
 
@@ -163,8 +162,8 @@ A new Community Token DAO must specify:
 ---
 #### Optional minting info
 
-- Addresses of accounts that can mint the token and its maximum supply. 
-The _`cap`_ is a hard cap on the total supply that can be achieved by minting. This refers to the _`total_supply`_. If no cap is specified, the supply can be unlimited. 
+- Addresses of accounts that can mint the token and its maximum supply.  
+- The _`cap`_ is a hard cap on the total supply that can be achieved by minting. This refers to the _`total_supply`_. If no cap is specified, the supply can be unlimited. 
 
 ```rust focus=2,7,11:14
 
