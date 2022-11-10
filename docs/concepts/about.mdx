@@ -7,28 +7,29 @@ sidebar_position: 1
 DAO stands for Decentralized Autonomous Organization. DAOs are a collective of users who make decisions about their organization through a bottom-up approach to governance. Unlike other organizations, DAOs have no central authority or governing body. Instead, anyone who holds a DAO's specified governance token can participate in the governance of the DAO and make decisions about the direction of the organization. DAOs created with Enterprise use blockchain smart contracts, or hard-coded directives, to specify the function of the DAO.
 
 
-Enterprise allows you to create a Community Token DAO, an NFT Community DAO, or a multisig wallet.
+Enterprise allows you to create a [Community Token DAO](#community-token-DAOs), an [NFT Community DAO](#nft-community-daos), or a [Multisig DAO](#multisig-daos).
 
 
 ## Multisig DAOs
 
-Multisig DAOs are based around the creation of multisig wallets. Multisig wallets are wallet accounts that require multiple parties to authorize a transaction. In order to transact the holdings of a multisig wallet, a minimum threshold number of multisig owners must sign the transaction. The threshold parameter is determined by the DAO configuration. Multisig wallets must be created with at least two members. Wallets in a multisig have weighted voting power. To learn more about multisig thresholds and weights, visit the [Configurations and parameters section](./config.mdx#weight-and-threshold).
+Multisig DAOs are based around the creation of multisig wallets. Multisig wallets are wallet accounts that require multiple parties to authorize a transaction. In order to transact the holdings of a multisig wallet, a minimum `threshold` number of multisig owners must sign the transaction. The `threshold` parameter is determined by a DAO’s configuration. Multisig wallets must be created with at least two members. Wallets in a multisig have weighted voting power. To learn more about multisig thresholds and weights, visit the [Configurations and parameters section](./config.mdx#weight-and-threshold).
 
-Enterprise allows you to create a new multisig wallet during the creation of the DAO or to create a DAO around an existing multisig contract. Multisig DAOs use the [CW3 fixed multisig contract](https://github.com/CosmWasm/cw-plus/tree/main/packages/cw3) to operate.
+Enterprise allows you to [create a new multisig wallet](../guides/multisig.mdx) during the initiation of the DAO or to [create a DAO around an existing multisig contract](../guides/multisig.mdx#create-a-dao-using-an-existing-multisig). Multisig DAOs use the [CW3 fixed multisig contract](https://github.com/CosmWasm/cw-plus/tree/main/packages/cw3) to operate.
 
 ## Community Token DAOs
 
-Community Token DAOs are built around a custom token created at the genesis of the DAO. These tokens are used in the governance of the DAO when they are staked. Unstaked tokens can be traded freely. 
+Community Token DAOs are built around a custom token. These tokens are used in the governance of the DAO. To participate in a Token DAO’s governance, you will need to [stake your tokens](../guides/stake.mdx). Unstaked tokens can be traded freely. 
 
-When defining the parameters of the DAO's configuration, users can specify the initial supply of the token and specific wallet addresses to send the new token to. Upon creation, the newly minted tokens will appear in the specified wallets. 
+For more on staking and proposals, visit the [Governance section](./governance.mdx).
 
-For more on staking and proposals, visit the [Governance section](./governance.mdx)
+When defining the [parameters of a DAO's configuration](./config.mdx), users can specify the initial supply of the token and specific wallet adresses. Upon creation, the newly minted tokens will appear in the specified wallets. 
 
-Enterprise allows you to mint tokens during the creation of the DAO or to create a DAO around an existing token contract. Community Token DAOs use the [CW20 Token contract](https://github.com/CosmWasm/cw-plus/blob/main/packages/cw20/README.md) to operate. 
+Enterprise allows you to mint tokens during [the initiation of a new DAO](../guides/token.mdx) or to  [create a DAO around an existing token contract](../guides/token.mdx#create-a-community-token-dao-using-an-existing-token). Community Token DAOs use the [CW20 Token contract](https://github.com/CosmWasm/cw-plus/blob/main/packages/cw20/README.md) to operate. 
 
 ## NFT Community DAOs
 
 NFT Community DAOs leverage NFTs as membership, giving NFT holders voting power to make decisions. NFTs, or Non-Fungible Tokens, are unique tokens that use the blockchain to certify ownership. They usually consist of a digital asset, such as an image. In an NFT Community DAO, members can [stake](./governance.mdx#staking) their NFTs to vote on [proposals](./governance.mdx#proposals). Staked NFTs act just like staked tokens in a [Community Token DAO](#community-token-dao). 
 
-Enterprise allows you to mint ownership NFTs during the creation of the DAO or to create a DAO around an existing NFT project. NFT Community DAOs use the [CW721 NFT Token contract](https://github.com/CosmWasm/cw-nfts/blob/main/packages/cw721/README.md) to operate. 
+Enterprise allows you to mint ownership NFTs during the [creation of a new DAO](../guides/nft.mdx) or to [create a DAO around an existing NFT project](../guides/nft.mdx#create-an-nft-community-dao-using-an-existing-nft-contract). NFT Community DAOs use the [CW721 NFT Token contract](https://github.com/CosmWasm/cw-nfts/blob/main/packages/cw721/README.md) to operate. 
+
 
