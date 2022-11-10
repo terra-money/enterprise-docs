@@ -6,29 +6,29 @@ sidebar_position: 2
 
 ## Proposals 
 
-DAO members use proposals to decide changes or actions of the DAO. These proposals can be to spend the treasury, change the configuration of the DAO, or decide the general direction of the DAO's future. After creating a proposal, DAO members can vote on whether to pass or fail the proposal. 
+DAO members use proposals to decide changes or actions of a DAO. These proposals can be to spend the treasury, change the configuration of a DAO, or decide the general direction of a DAO's future. After creating a proposal, DAO members can vote on whether to pass or fail the proposal. 
 
 There are two main proposal types: DAO configuration proposals and Text proposals. 
 
 ### DAO configuration proposals
 
-This proposal type allows members to change specific configurations of the DAO, such as the voting period, threshold, quorum, or any other of the DAO configuration parameters. DAO configuration proposals take effect automatically after passing. Failed proposals leave the DAO configuration unchanged. 
+This proposal type allows members to change specific configurations of a DAO, such as the [voting period](#voting-period), [threshold](#threshold), [quorum](#quorum), or any other [configuration parameters](./config.mdx). DAO configuration proposals generally take effect automatically after passing. Failed proposals leave the DAO configuration unchanged. 
 
 ### Text proposals
 
-For general proposals, such as directional changes or to gain consensus over an issue, DAO members can submit a text proposal. Text proposals are open-ended and don't take automatic effect or change the configuration of the DAO. 
+For general proposals, such as directional changes or gaining consensus over an issue, DAO members can submit a text proposal. Text proposals are open-ended and don't take automatic effect or change the configuration of the DAO. 
 
 ## Staking
 
-In order to ensure the long-term stability of a DAO, and to prevent malicious governance attacks, DAO members must stake their tokens or NFTs before they can vote with them. Staking in a DAO means you agree to lock your tokens or NFTs for a period of time. During the staking period, users cannot trade or sell their tokens or NFTs. 
+In order to ensure the long-term stability of a DAO, and to prevent malicious governance attacks, DAO members must [stake their tokens or NFTs](../guides/stake.mdx) before they can vote with them. Staking in a DAO means you agree to lock your tokens or NFTs for a period of time. During the staking period, users cannot trade or sell their tokens or NFTs. 
 
-Users can unstake their tokens at any time. Once a user has unstaked their tokens, the unstaking period begins. The unstaking staking period length is determined by the DAO configuration. After the unstaking period ends, users can claim their tokens or NFTs. 
+Users can [unstake](../guides/stake.mdx#unstake-your-tokens) their tokens at any time. Once a user has unstaked their tokens, the unstaking period begins. The length of an unstaking period is determined by a DAO’s [configuration](./config.mdx). After the unstaking period ends, users can claim their tokens or NFTs. 
 
-You can only vote on a proposal if you have staked your tokens or NFTs prior to the creation of a DAO proposal. 
+You can only [vote on a proposal](../guides/governance.mdx#vote-on-a-proposal) if you have staked your tokens or NFTs prior to the creation of a DAO proposal. 
 
 ## Voting
 
-Once a proposal is created, it enters the voting period. Voting is done by DAO members who have staked their NFTs prior to the creation of a proposal. Users vote with their staked tokens. One staked token equals one vote. The votes are tallied at the end of the voting period. If a proposal has met the minimum number of votes, called the quorum, and if the number of yes votes reaches a threshold percentage of the total votes, the proposal passes. 
+Once a proposal is created, it enters the voting period. [Voting](../guides/governance.mdx#vote-on-a-proposal) is done by DAO members who have staked their NFTs prior to the creation of a proposal. Users vote with their staked tokens. One staked token or NFT equals one vote. For multisig wallets, votes are determined by [weight](./config.mdx#weight-and-threshold). The votes are tallied at the end of the [voting period](#voting-period). If a proposal has met the minimum number of votes, called the [quorum](#quorum), and if the number of yes votes reaches a [threshold](#threshold) percentage of the total votes, the proposal passes. 
 
 ## Governance parameters
 
@@ -59,4 +59,5 @@ The period of time it takes for a staked token to become unstaked. Tokens in the
 #### Vote duration
 
 The period of time during which a user can vote on a proposal. When a proposal is created, the vote duration starts. Once the vote duration is reached, the votes are tallied and the proposal either passes or fails. No votes can be cast after the voting period. 
+
 
