@@ -4,6 +4,7 @@ sidebar_position: 3
 
 # Messages
 
+This page outlines important messages for Enterprise smart contracts. For more information on DAO cration, visit [Creating a DAO](./create.mdx)
 ## InstantiateMsg
 
 <CH.Scrollycoding>
@@ -24,7 +25,7 @@ struct InstantiateMsg {
 
 ---
 
-The _`enterprise_factory_contract`_ refers to the address of enterprise-factory contract that is creating the DAO.
+The _`enterprise_factory_contract`_ field refers to the address of the enterprise-factory contract that is creating the DAO.
 
 ```rust Rust focus=5
 
@@ -55,7 +56,7 @@ The NFT assets that are allowed to be shown in DAO’s treasury.
 
 <CH.Scrollycoding>
 
-The following section outlines the messages that can be executed with Enterprise. 
+The following section outlines the Enterprise's various execute messages. 
 
 ```rust Rust
 enum ExecuteMsg {
@@ -90,7 +91,7 @@ Used to cast a vote for a proposal  in the voting period using a proposal id and
 
 - _`Yes`_: in favor
 - _`No`_: not in favor
-- _`Abstain`_: a vote that counts toward meeting quorum, but is neither for nor against. 
+- _`Abstain`_: a vote that counts toward meeting [quorum](../concepts/config.mdx#quorum), but is neither for nor against. 
 - _`Veto`_: vetoes the proposal. 
 
 
@@ -123,7 +124,7 @@ struct ExecuteProposalMsg {
 
 ### UnstakeMsg
 
-Used to unstake tokens or an NFT from governance staking. Users will have to claim their unstaked assets after the unstaking lockup period ends. 
+Used to [unstake](../guides/stake.mdx) tokens or an NFT from governance staking. Users will have to [claim](../guides/stake.mdx#claim-your-assets) their unstaked assets after the unstaking period ends. 
 
 ```rust Rust
 enum UnstakeMsg {
@@ -145,7 +146,7 @@ type NftTokenId = String;
 
 ### Claim
 
-Claims all assets available to the sender after they have unstaked and the unlocking period has passed. 
+[Claims](../guides/stake.mdx#claim-your-assets) all assets available to the sender after they have unstaked and the unlocking period has passed. 
 
 ```rust Rust focus=6
 pub enum ExecuteMsg {
@@ -162,7 +163,7 @@ pub enum ExecuteMsg {
 
 ### Hooks
 
-These hook messages are used for receiving CW20 tokens and CW721 NFTs that are going to be staked.
+These hook messages are used for receiving CW20 tokens and CW721 NFTs that are going to be [staked](../guides/stake.mdx).
 
 ```rust Rust
 enum Cw20HookMsg {
