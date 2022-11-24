@@ -8,15 +8,16 @@ sidebar_position: 2
 
 DAO members use proposals to decide changes or actions of a DAO. These proposals can be to spend the treasury, change the configuration of a DAO, or decide the general direction of a DAO's future. After creating a proposal, DAO members can vote on whether to pass or fail the proposal. 
 
-There are two main proposal types: DAO configuration proposals and Text proposals. 
+Members can currently create proposals of the following types:
 
-### DAO configuration proposals
-
-This proposal type allows members to change specific configurations of a DAO, such as the [voting period](#voting-period), [threshold](#threshold), [quorum](#quorum), or any other [configuration parameters](./config.mdx). DAO configuration proposals generally take effect automatically after passing. Failed proposals leave the DAO configuration unchanged. 
-
-### Text proposals
-
-For general proposals, such as directional changes or gaining consensus over an issue, DAO members can submit a text proposal. Text proposals are open-ended and don't take automatic effect or change the configuration of the DAO. 
+| Proposal Type                         | Description                                                                                                                                                                                                                                                                                                                                                          |
+|---------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Text proposals                        | For general proposals, such as directional changes or gaining consensus over an issue, DAO members can submit a text proposal. Text proposals are open-ended and don't take automatic effect or change the configuration of the DAO.                                                                                                                                 |
+| DAO configuration proposals           | This proposal type allows members to change specific configurations of a DAO, such as the [voting period](#voting-period), [threshold](#threshold), [quorum](#quorum), or any other [configuration parameters](./config.mdx). DAO configuration proposals generally take effect automatically after passing. Failed proposals leave the DAO configuration unchanged. |
+| DAO upgrade proposals                 | This proposal type allows members to upgrade the DAOs contracts to the latest version, so that members can enjoy the latest Enterprise features.                                                                                                                                                                                                                     |
+| Proposal to update whitelisted assets | This proposal type allows members to add/remove assets that are displayed in the DAO's treasury page.                                                                                                                                                                                                                                                                |
+| Proposal to execute message           | This proposal type allows members to craft generic cosmos/wasm messages which will be executed by the DAO. This allows for the DAO to send funds, interact with smart contracts, delegate/undelegate LUNA from the treasury etc.                                                                                                                                     |
+| Proposal to update multisig members   | This proposal type allows members to add/remove members from the multisig DAO. Only multisig DAOs will have this option available.                                                                                                                                                                                                                                   |
 
 ## Staking
 
