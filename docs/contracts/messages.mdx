@@ -14,7 +14,7 @@ The _`InstantiateMsg`_ contains all the necessary info for creating a DAO, inclu
 
 ```rust Rust
 struct InstantiateMsg {
-		pub dao_metadata: DaoMetadata,
+    pub dao_metadata: DaoMetadata,
     pub dao_gov_config: DaoGovConfig,
     pub dao_membership_info: DaoMembershipInfo,
     pub enterprise_factory_contract: String,
@@ -60,8 +60,8 @@ The following section outlines the Enterprise's various execute messages.
 
 ```rust Rust
 enum ExecuteMsg {
-		CreateProposal(CreateProposalMsg),
-		CastVote(CastVoteMsg),
+    CreateProposal(CreateProposalMsg),
+    CastVote(CastVoteMsg),
     ExecuteProposal(ExecuteProposalMsg),
     Unstake(UnstakeMsg),
     Claim {},
