@@ -85,18 +85,18 @@ module.exports = async function config() {
         },
         navbar: {
           title: "Enterprise Docs",
-          //logo: {
-            //alt: "Enterprise Docs",
-            //src: "img/logo_light.svg",
-            //srcDark: "img/logo_dark.svg",
-          //},
+          logo: {
+            alt: "Enterprise Docs",
+            src: "img/enterprise.svg",
+            srcDark: "img/enterprise.svg",
+          },
           items: [
             {
-              href: "https://enterprise-protocol-app.pages.dev/", //front-end URL
+              href: "https://beta.enterprise.money/", //front-end URL
               position: "right",
               label: "Enterprise App",
               className: "header-terra-link",
-              "aria-label": "Terra Money",
+              "aria-label": "Enterprise App",
             },
             {
               href: "https://github.com/terra-money/enterprise-docs",
