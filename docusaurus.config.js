@@ -85,11 +85,11 @@ module.exports = async function config() {
         },
         navbar: {
           title: "Enterprise Docs",
-          //logo: {
-            //alt: "Enterprise Docs",
-            //src: "img/logo_light.svg",
-            //srcDark: "img/logo_dark.svg",
-          //},
+          logo: {
+            alt: "Enterprise Docs",
+            src: "img/enterprise.svg",
+            srcDark: "img/enterprise.svg",
+          },
           items: [
             {
               href: "https://enterprise-protocol-app.pages.dev/", //front-end URL
