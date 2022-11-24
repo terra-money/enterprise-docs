@@ -273,7 +273,7 @@ $light-blue-arrow: '/img/ArrowLightBlue.svg';
     }
 
     &:hover::before {
-      background-image: url($colorful-luna);
+      background-image: url($white-luna);
     }
 
     &:hover::after {
@@ -303,11 +303,11 @@ $light-blue-arrow: '/img/ArrowLightBlue.svg';
       border: 1px solid #343536;
 
       &::before {
-        background-image: url($small-colorful-luna);
+        background-image: url($small-colorful-terra);
       }
 
       &:hover::before {
-        background-image: url($small-colorful-luna);
+        background-image: url($small-colorful-terra);
       }
 
       &:hover {

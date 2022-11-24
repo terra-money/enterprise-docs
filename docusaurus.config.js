@@ -92,11 +92,11 @@ module.exports = async function config() {
           },
           items: [
             {
-              href: "https://enterprise-protocol-app.pages.dev/", //front-end URL
+              href: "https://beta.enterprise.money/", //front-end URL
               position: "right",
               label: "Enterprise App",
               className: "header-terra-link",
-              "aria-label": "Terra Money",
+              "aria-label": "Enterprise App",
             },
             {
               href: "https://github.com/terra-money/enterprise-docs",
