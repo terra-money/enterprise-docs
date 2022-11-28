@@ -112,8 +112,11 @@ enum ProposalAction {
     UpdateMetadata(UpdateMetadataMsg),
     UpdateGovConfig(UpdateGovConfigMsg),
     UpdateAssetWhitelist(UpdateAssetWhitelistMsg),
-		UpdateNftWhitelist(UpdateNftWhitelistMsg),
+	UpdateNftWhitelist(UpdateNftWhitelistMsg),
     RequestFundingFromDao(RequestFundingFromDaoMsg),
+    UpgradeDao(UpgradeDaoMsg),
+    ExecuteMsgs(ExecuteMsgsMsg),
+    ModifyMultisigMembership(ModifyMultisigMembershipMsg),
 }
 
 ---
@@ -191,6 +194,48 @@ struct RequestFundingFromDaoMsg {
     pub assets: Vec<Asset>,
 }
 ```
+
+---
+
+### UpgradeDaoMsg
+
+Upgrades DAO to a new Enterprise code, enabling the DAO to benefit from new features and bug fixes.
+
+```rust Rust
+struct UpgradeDaoMsg {
+    /// New Enterprise code ID that the DAO wants to upgrade to
+    pub new_dao_code_id: u64,
+    /// MigrateMsg in binary form, to be used to migrate to the new contract code
+    pub migrate_msg: Binary,
+}
+```
+
+---
+
+### ExecuteMsgsMsg
+
+Makes the DAO execute a list of Cosmos messages.
+
+```rust Rust
+struct ExecuteMsgsMsg {
+    pub msgs: Vec<String>,
+}
+```
+
+---
+
+### ModifyMultisigMembershipMsg
+
+Updates multisig members for this DAO, through specifying new weights for addresses. Only available in multisig DAOs.
+
+```rust Rust
+struct ModifyMultisigMembershipMsg {
+    /// Members to be edited.
+    /// Can contain existing members, in which case their new weight will be the one specified in
+    /// this message. This effectively allows removing of members (by setting their weight to 0).
+    pub edit_members: Vec<MultisigMember>,
+}
+```
 </CH.Scrollycoding>
 
 ## Expiration
@@ -207,6 +252,21 @@ enum Expiration {
     AtTime(Timestamp),
     /// Never will never expire. Used to express the empty variant
     Never {},
+}
+```
+
+</CH.Scrollycoding>
+
+## MultisigMember
+
+<CH.Scrollycoding>
+
+MultisigMember defines an address and its weight in the multisig.
+
+```rust Rust
+struct MultisigMember {
+    pub address: String,
+    pub weight: Uint128,
 }
 ```
 
