@@ -14,7 +14,7 @@ Enterprise allows you to create a [Community Token DAO](#community-token-DAOs), 
 
 Multisig DAOs are based around the creation of multisig wallets. Multisig wallets are wallet accounts that require multiple parties to authorize a transaction. In order to transact the holdings of a multisig wallet, a minimum `threshold` number of multisig owners must sign the transaction. The `threshold` parameter is determined by a DAO’s configuration. Multisig wallets must be created with at least two members. Wallets in a multisig have weighted voting power. To learn more about multisig thresholds and weights, visit the [Configurations and parameters section](./config.mdx#weight-and-threshold).
 
-Enterprise allows you to [create a new multisig wallet](../guides/multisig.mdx) during the initiation of the DAO or to [create a DAO around an existing multisig contract](../guides/multisig.mdx#create-a-dao-using-an-existing-multisig). Multisig DAOs do not use an external contract for managing membership.
+Enterprise allows you to [create a new multisig wallet](../guides/multisig.mdx) during the initiation of the DAO or to [create a DAO around an existing multisig contract](../guides/multisig.mdx#create-a-dao-using-an-existing-multisig). 
 
 ## Community Token DAOs
 
@@ -22,9 +22,9 @@ Community Token DAOs are built around a custom token. These tokens are used in t
 
 For more on staking and proposals, visit the [Governance section](./governance.mdx).
 
-When defining the [parameters of a DAO's configuration](./config.mdx), users can specify the initial supply of the token and specific wallet adresses. Upon creation, the newly minted tokens will appear in the specified wallets. 
+When defining the [parameters of a token DAO's configuration](./config.mdx), users can specify the initial supply of the token and specific wallet adresses. Upon creation, the newly minted tokens will appear in the specified wallets. 
 
-Enterprise allows you to mint tokens during [the initiation of a new DAO](../guides/token.mdx) or to  [create a DAO around an existing token contract](../guides/token.mdx#create-a-community-token-dao-using-an-existing-token). Community Token DAOs use the [CW20 Token contract](https://github.com/CosmWasm/cw-plus/blob/main/packages/cw20/README.md) to operate. 
+Enterprise allows you to mint tokens during [the initiation of a new DAO](../guides/token.mdx) or to [create a DAO around an existing token contract](../guides/token.mdx#create-a-community-token-dao-using-an-existing-token). Community Token DAOs use the [CW20 Token contract](https://github.com/CosmWasm/cw-plus/blob/main/packages/cw20/README.md) to operate. 
 
 ## NFT Community DAOs
 
