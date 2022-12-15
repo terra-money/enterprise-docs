@@ -2,9 +2,18 @@
 sidebar_position: 3
 ---
 
+import Admonition from '@theme/Admonition';
+
 # Messages
 
-This page outlines important messages for Enterprise smart contracts. For more information on DAO creation, visit [Creating a DAO](./create.mdx)
+This page outlines important messages for Enterprise smart contracts. For more information on DAO creation, visit [Creating a DAO](./create.mdx).
+
+<Admonition type="tip" icon="📝" title="Message templates">
+
+To learn how to write messages for governance proposals, visit the [Message templates](../guides/messages.mdx) section. 
+
+</Admonition>
+
 ## InstantiateMsg
 
 <CH.Scrollycoding>
@@ -73,7 +82,7 @@ enum ExecuteMsg {
 
 ### CreateProposalMsg
 
-This message creates a proposal using a title, descrition, and the [proposal_actions](./gov.mdx#proposal-actions). If a proposal passes, actions are executed in the order recieved. 
+This message creates a proposal using a title, description, and the [proposal_actions](./gov.mdx#proposal-actions). If a proposal passes, actions are executed in the order received. 
 
 ```rust Rust
 struct CreateProposalMsg {
@@ -87,7 +96,7 @@ struct CreateProposalMsg {
 
 ### CastVoteMsg
 
-Used to cast a vote for a proposal  in the voting period using a proposal id and an outcome. The possible choices are:
+Used to cast a vote for a proposal in the voting period using a proposal id and an outcome. The possible choices are:
 
 - _`Yes`_: in favor
 - _`No`_: not in favor
@@ -176,3 +185,4 @@ enum Cw721HookMsg {
 ```
 
 </CH.Scrollycoding>
+
