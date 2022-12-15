@@ -2,6 +2,8 @@
 sidebar_position: 2
 ---
 
+import Admonition from '@theme/Admonition';
+
 # Governance 
 
 This section outlines the data structures for DAO governance. 
@@ -61,7 +63,7 @@ The period of time (either in seconds or blocks) it takes for a staked token to 
 
 <CH.Scrollycoding>
 
-Proposals are submited by DAO governance members and are voted on by staked asset holders or multisig members of a DAO. 
+Proposals are submitted by DAO governance members and are voted on by staked asset holders or multisig members of a DAO. 
 
 ```rust Rust
 type ProposalId = u64;
@@ -216,6 +218,12 @@ struct UpgradeDaoMsg {
 
 Makes the DAO execute a list of Cosmos messages.
 
+<Admonition type="tip" icon="📝" title="Message templates">
+
+To learn how to write messages for governance proposals, visit the [Message templates](../guides/messages) section. 
+
+</Admonition>
+
 ```rust Rust
 struct ExecuteMsgsMsg {
     pub msgs: Vec<String>,
@@ -271,3 +279,4 @@ struct MultisigMember {
 ```
 
 </CH.Scrollycoding>
+

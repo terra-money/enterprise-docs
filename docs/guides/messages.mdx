@@ -1,0 +1,270 @@
+---
+sidebar_position: 5
+---
+
+# Message Templates
+
+This page outlines messages that can be executed by Enterprise when creating an execute message proposal.
+
+## Bank messages
+
+The following section outlines the types of Bank messages that can be executed.
+
+<CH.Scrollycoding>
+
+### Send Message
+
+This message allows you to send native assets such as LUNA or IBC assets from the treasury to another address.
+
+```json JSON
+{
+  "bank": {
+    "send": {
+      "to_address": "<insert_destination_address>",
+      "amount": [
+        {
+          "denom": "<insert_denom>",
+          "amount": "<insert_amount>"
+        }
+      ]
+    }
+  }
+}
+```
+
+---
+### Burn Message
+
+This message allows you to burn native assets such as LUNA or IBC assets from the treasury.
+
+```json JSON
+{
+  "bank": {
+    "burn": {
+      "amount": [
+        {
+          "denom": "<insert_denom>",
+          "amount": "<insert_amount>"
+        }
+      ]
+    }
+  }
+}
+```
+</CH.Scrollycoding>
+
+## Staking messages
+
+The following section outlines the types of Staking messages that can be executed.
+
+<CH.Scrollycoding>
+
+### Delegate Message
+
+This message allows you to LUNA from the treasury to a specific validator of choice.
+
+```json JSON
+{
+  "staking": {
+    "delegate": {
+      "amount": [
+        {
+          "denom": "<insert_denom>",
+          "amount": "<insert_amount>"
+        }
+      ],
+      "validator": "<insert_validator_address>"
+    }
+  }
+}
+```
+
+---
+### Undelegate Message
+
+This message allows you to LUNA from the treasury to a specific validator of choice.
+
+```json JSON
+{
+  "staking": {
+    "undelegate": {
+      "amount": [
+        {
+          "denom": "<insert_denom>",
+          "amount": "<insert_amount>"
+        }
+      ],
+      "validator": "<insert_validator_address>"
+    }
+  }
+}
+```
+---
+### Redelegate Message
+
+This message allows you to LUNA from the treasury to a specific validator of choice.
+
+```json JSON
+{
+  "staking": {
+    "redelegate": {
+      "amount": [
+        {
+          "denom": "<insert_denom>",
+          "amount": "<insert_amount>"
+        }
+      ],
+      "src_validator": "<insert_src_validator_address>",
+      "dst_validator": "<insert_dst_validator_address>",
+    }
+  }
+}
+```
+</CH.Scrollycoding>
+
+## Distribution messages
+
+The following section outlines the types of Distribution messages that can be executed.
+
+<CH.Scrollycoding>
+
+### Withdraw Delegator Reward Message
+
+This message allows you to withdraw the delegator rewards from staking.
+
+```json JSON
+{
+  "distribution": {
+    "withdraw_delegator_reward": {
+      "validator": "<insert_validator_address>",
+    }
+  }
+}
+```
+
+---
+
+### Set Withdraw Address Message
+
+This message allows you to set the address whereby delegator rewards will be sent to.
+
+```json JSON
+{
+  "distribution": {
+    "set_withdraw_address": {
+      "address": "<insert_address>",
+    }
+  }
+}
+```
+
+</CH.Scrollycoding>
+
+## Wasm messages
+
+The following section outlines the types of wasm messages that can be executed. Wasm messages allows you to interact with contracts on chain.
+
+<CH.Scrollycoding>
+
+### Execute Message
+
+This message allows you to execute generic wasm messages on chain.
+
+```json JSON
+{
+  "wasm": {
+    "execute": {
+      "contract_addr": "<insert_contract_address>",
+      "funds": [
+        {
+          "denom": "<insert_denom>",
+          "amount": "<insert_amount>"
+        }
+      ],
+      "msg": "<insert_message>"
+
+    }
+  }
+}
+```
+
+---
+### Instantiate Message
+
+This message allows the DAO to instantiate a new contract.
+
+```json JSON
+{
+  "wasm": {
+    "instantiate": {
+      "admin": "<insert_admin_address>", // Can be null
+      "code_id" : <insert_code_id>,
+      "funds": [
+        {
+          "denom": "<insert_denom>",
+          "amount": "<insert_amount>"
+        }
+      ],
+      "label": "<insert_label>",
+      "msg": "<insert_message>"
+
+    }
+  }
+}
+```
+---
+### Migrate Message
+
+This message allows the DAO to migrate a contract.
+
+```json JSON
+{
+  "wasm": {
+    "migrate": {
+      "contract_addr": "<insert_contract_address>",
+      "msg": "<insert_message>",
+      "new_code_id": <insert_new_code_id>
+    }
+  }
+}
+```
+---
+### Update Contract Admin Message
+
+This message allows the DAO to update the admin of a contract.
+
+```json JSON
+{
+  "wasm": {
+    "update_admin": {
+      "contract_addr": "<insert_contract_address>",
+      "admin": "<insert_admin_addr>"
+    }
+  }
+}
+```
+---
+### Clear Contract Admin Message
+
+This message allows the DAO to remove the admin of a contract.
+
+```json JSON
+{
+  "wasm": {
+    "clear_admin": {
+      "contract_addr": "<insert_contract_address>"
+    }
+  }
+}
+```
+</CH.Scrollycoding>
+
+## Custom messages
+
+If you would like to send other messages from modules such as governance etc., you can leverage custom messages.
+
+```json JSON
+{
+  "custom": <insert_custom_message>
+}
+```
