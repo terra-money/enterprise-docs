@@ -8,30 +8,14 @@ This page outlines messages that can be executed by Enterprise when creating an 
 
 ## Bank messages
 
-<CH.Scrollycoding>
-
 The following section outlines the types of Bank messages that can be executed.
 
-```json JSON
-{
-  "bank": {
-    "send": {
-      "to_address": "<insert_destination_address>",
-      "amount": [
-        {
-          "denom": "<insert_denom>",
-          "amount": "<insert_amount>"
-        }
-      ]
-    }
-  }
-}
-```
----
+<CH.Scrollycoding>
 
 ### Send Message
 
-This message allows you to send native assets such as LUNA or IBC assets from the treasury to another address
+This message allows you to send native assets such as LUNA or IBC assets from the treasury to another address.
+
 ```json JSON
 {
   "bank": {
@@ -51,7 +35,8 @@ This message allows you to send native assets such as LUNA or IBC assets from th
 ---
 ### Burn Message
 
-This message allows you to burn native assets such as LUNA or IBC assets from the treasury
+This message allows you to burn native assets such as LUNA or IBC assets from the treasury.
+
 ```json JSON
 {
   "bank": {
@@ -70,30 +55,14 @@ This message allows you to burn native assets such as LUNA or IBC assets from th
 
 ## Staking messages
 
-<CH.Scrollycoding>
-
 The following section outlines the types of Staking messages that can be executed.
 
-```json JSON
-{
-  "staking": {
-    "delegate": {
-      "amount": [
-        {
-          "denom": "<insert_denom>",
-          "amount": "<insert_amount>"
-        }
-      ],
-      "validator": "<insert_validator_address>"
-    }
-  }
-}
-```
----
+<CH.Scrollycoding>
 
 ### Delegate Message
 
 This message allows you to LUNA from the treasury to a specific validator of choice.
+
 ```json JSON
 {
   "staking": {
@@ -114,6 +83,7 @@ This message allows you to LUNA from the treasury to a specific validator of cho
 ### Undelegate Message
 
 This message allows you to LUNA from the treasury to a specific validator of choice.
+
 ```json JSON
 {
   "staking": {
@@ -133,6 +103,7 @@ This message allows you to LUNA from the treasury to a specific validator of cho
 ### Redelegate Message
 
 This message allows you to LUNA from the treasury to a specific validator of choice.
+
 ```json JSON
 {
   "staking": {
@@ -150,22 +121,12 @@ This message allows you to LUNA from the treasury to a specific validator of cho
 }
 ```
 </CH.Scrollycoding>
-## Distribution messages
 
-<CH.Scrollycoding>
+## Distribution messages
 
 The following section outlines the types of Distribution messages that can be executed.
 
-```json JSON
-{
-  "distribution": {
-    "withdraw_delegator_reward": {
-      "validator": "<insert_validator_address>",
-    }
-  }
-}
-```
----
+<CH.Scrollycoding>
 
 ### Withdraw Delegator Reward Message
 
@@ -182,7 +143,9 @@ This message allows you to withdraw the delegator rewards from staking.
 ```
 
 ---
+
 ### Set Withdraw Address Message
+
 This message allows you to set the address whereby delegator rewards will be sent to.
 
 ```json JSON
@@ -194,35 +157,18 @@ This message allows you to set the address whereby delegator rewards will be sen
   }
 }
 ```
-</CH.Scrollycoding>
-## Wasm messages
 
-<CH.Scrollycoding>
+</CH.Scrollycoding>
+
+## Wasm messages
 
 The following section outlines the types of wasm messages that can be executed. Wasm messages allows you to interact with contracts on chain.
 
-```json JSON
-{
-  "wasm": {
-    "execute": {
-      "contract_addr": "<insert_contract_address>",
-      "funds": [
-        {
-          "denom": "<insert_denom>",
-          "amount": "<insert_amount>"
-        }
-      ],
-      "msg": "<insert_message>"
-
-    }
-  }
-}
-```
----
+<CH.Scrollycoding>
 
 ### Execute Message
 
-This message allows you to execute generic wasm messages on chain
+This message allows you to execute generic wasm messages on chain.
 
 ```json JSON
 {
@@ -245,7 +191,7 @@ This message allows you to execute generic wasm messages on chain
 ---
 ### Instantiate Message
 
-This message allows the DAO to instantiate a new contract
+This message allows the DAO to instantiate a new contract.
 
 ```json JSON
 {
@@ -269,7 +215,7 @@ This message allows the DAO to instantiate a new contract
 ---
 ### Migrate Message
 
-This message allows the DAO to migrate a contract
+This message allows the DAO to migrate a contract.
 
 ```json JSON
 {
@@ -285,7 +231,7 @@ This message allows the DAO to migrate a contract
 ---
 ### Update Contract Admin Message
 
-This message allows the DAO to update the admin of a contract
+This message allows the DAO to update the admin of a contract.
 
 ```json JSON
 {
@@ -300,7 +246,7 @@ This message allows the DAO to update the admin of a contract
 ---
 ### Clear Contract Admin Message
 
-This message allows the DAO to remove the admin of a contract
+This message allows the DAO to remove the admin of a contract.
 
 ```json JSON
 {
@@ -312,8 +258,11 @@ This message allows the DAO to remove the admin of a contract
 }
 ```
 </CH.Scrollycoding>
+
 ## Custom messages
+
 If you would like to send other messages from modules such as governance etc., you can leverage custom messages.
+
 ```json JSON
 {
   "custom": <insert_custom_message>
