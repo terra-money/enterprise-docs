@@ -1,0 +1,52 @@
+// CodeHike styling
+.ch-scrollycoding-step-content {
+  border-radius: 5px;
+  margin: 0.25rem -0.5rem;
+  padding: 1rem 0.5rem;
+  border: 1.5px solid transparent;
+  min-height: 100px;
+
+  &:hover {
+    background-color: $code-hike-hover;
+  }
+
+  &[data-selected] {
+    background-color: $code-hike-selected;
+    border: 1.5px solid transparent;
+  }
+}
+
+.ch-scrollycoding {
+
+}
+
+.ch-inline-code > code {
+  word-break: break-word;
+}
+
+.ch-scrollycoding-sticker {
+  position: sticky;
+  top: 70px !important;
+  display: flex;
+  align-self: start;
+  flex-flow: column;
+  justify-content: center;
+  width: 60%;
+  max-height: unset;
+}
+
+.ch-editor-frame {
+
+height: fit-content !important;    /* If removed, height is set to largest code block */
+
+max-height: 80vh !important;
+}
+
+.ch-code-scroll-parent {
+ min-height: 100px;
+}
+
+.ch-scrollycoding-content {
+  box-sizing: border-box;
+  flex: 1;
+}
