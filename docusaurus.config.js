@@ -102,7 +102,7 @@ module.exports = async function config() {
           },
           items: [
             {
-              href: "https://beta.enterprise.money/", //front-end URL
+              href: "https://enterprise.money/", //front-end URL
               position: "right",
               label: "Enterprise App",
               className: "header-terra-link",
