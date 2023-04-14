@@ -33,6 +33,10 @@ Unstaking while you have votes on active proposals will update your votes to the
 
 Once a proposal is created, it enters the voting period. [Voting](../guides/governance.mdx#vote-on-a-proposal) is done by DAO members who have staked their tokens or NFTs prior to the creation of a proposal. Users vote with their staked tokens. One staked token or NFT equals one vote. For multisig DAOs, votes are determined by [weight](./config.mdx#weight-and-threshold). The votes are tallied at the end of the [voting period](#voting-period). If a proposal has met the minimum number of votes, called the [quorum](#quorum), and if the number of yes votes reaches a [threshold](#threshold) percentage of the total votes, the proposal passes. After a proposal passes, the proposal will need to be [executed by the proposer](../guides/governance.mdx#execute-a-proposal). 
 
+## Deposits
+
+Deposits are submitted with proposals as a way to discourage spam. Deposit amounts are specified in a DAO's parameters. If a proposal fails to meet quorum or the number of veto votes at the end of the voting period is more than the veto threshold, the deposit will not be refunded. If a proposal meets quorum and returns a majority yes or no vote without meeting the veto threshold, the deposit will be returned. 
+
 ## Governance parameters
 
 Governance parameters are outlined in the DAO configuration during the creation of the DAO. All DAOs have the following governance parameters:
