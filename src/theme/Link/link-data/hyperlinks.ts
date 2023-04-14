@@ -2,20 +2,20 @@ import { HyperlinkProps } from '../Hyperlink';
 
 const hyperlinks: HyperlinkProps[] = [
   {
-    href: 'https://station.terra.money/',
-    innerHTML: 'Terra Station',
+    href: 'https://enterprise.money/',
+    innerHTML: 'Enterprise App',
   },
   {
-    href: 'https://status.terra.money/',
-    innerHTML: 'Terra Status',
+    href: 'https://station.terra.money/',
+    innerHTML: 'Station',
+  },
+  {
+    href: 'https://terra.money/',
+    innerHTML: 'Terra.money',
   },
   {
     href: 'https://finder.terra.money/',
     innerHTML: 'Terra Finder',
-  },
-  {
-    href: 'https://agora.terra.money/',
-    innerHTML: 'Terra Agora',
   },
 ]
 
