@@ -67,12 +67,10 @@ This message allows you to LUNA from the treasury to a specific validator of cho
 {
   "staking": {
     "delegate": {
-      "amount": [
-        {
-          "denom": "<insert_denom>",
-          "amount": "<insert_amount>"
-        }
-      ],
+      "amount":{
+        "denom": "<insert_denom>",
+        "amount": "<insert_amount>"
+      },
       "validator": "<insert_validator_address>"
     }
   }
@@ -88,12 +86,10 @@ This message allows you to LUNA from the treasury to a specific validator of cho
 {
   "staking": {
     "undelegate": {
-      "amount": [
-        {
-          "denom": "<insert_denom>",
-          "amount": "<insert_amount>"
-        }
-      ],
+      "amount": {
+        "denom": "<insert_denom>",
+        "amount": "<insert_amount>"
+      },
       "validator": "<insert_validator_address>"
     }
   }
@@ -108,12 +104,10 @@ This message allows you to LUNA from the treasury to a specific validator of cho
 {
   "staking": {
     "redelegate": {
-      "amount": [
-        {
-          "denom": "<insert_denom>",
-          "amount": "<insert_amount>"
-        }
-      ],
+      "amount":{
+        "denom": "<insert_denom>",
+        "amount": "<insert_amount>"
+      },
       "src_validator": "<insert_src_validator_address>",
       "dst_validator": "<insert_dst_validator_address>",
     }
