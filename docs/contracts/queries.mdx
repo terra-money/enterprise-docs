@@ -184,14 +184,14 @@ struct ProposalStatusResponse {
 Returns the [vote outcome](./messages.mdx#castvotemsg) and the number of votes of a specific DAO member given a poll id and an address. 
 <CH.Code>
 
-```rust
+```rust Query
 struct PollVoterParams {
     pub poll_id: Uint64,
     pub voter_addr: String,
 }
 ```
 ---
-```rust
+```rust Response
 struct PollVoterResponse {
     pub vote: Option<Vote>,
 }
