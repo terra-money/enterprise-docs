@@ -2,7 +2,7 @@ import { HyperlinkProps } from '../Hyperlink';
 
 const hyperlinks: HyperlinkProps[] = [
   {
-    href: 'https://enterprise.money/',
+    href: 'https://dao.enterprise.money/',
     innerHTML: 'Enterprise App',
   },
   {
