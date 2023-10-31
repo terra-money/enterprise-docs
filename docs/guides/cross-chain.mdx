@@ -1,0 +1,33 @@
+---
+sidebar_position: 3.1
+---
+
+# Cross-chain treasuries
+
+Enterprise DAOs can manage treasuries across Cosmos chains directly from the Enterprise app. Cross-chain treasuries are DAO treasury addresses available on supported chains that can be controlled from your dao. 
+
+Currently, Enterprise DAO is supported on the following chains:
+- Terra
+- Migaloo
+
+## Deploy a cross-chain treasury
+
+You can deploy your treasury cross-chain by initiating a governance proposal in your DAO. 
+
+1. Upgrade your DAO (only applicable to existing DAOs).  Submit an “Upgrade” proposal, and [pass it through the normal governance process](./governance.mdx) by having your members vote on it.
+
+2. Submit a cross-chain treasury proposal. Click on “New Proposal” on the DAO’s page, select the “Deploy cross-chain treasury” proposal type, and select where you’d like your cross-chain treasury to be deployed. [pass it through the normal governance process](./governance.mdx) by having your members vote on it and execute the proposal.
+
+3. Your cross-chain treasury is now deployed. You should be able to see the address for your new cross-chain treasury on the DAO home page.
+
+## Manage cross-chain treasuries
+
+You can [Create proposals](./governance.mdx) to spend your cross-chain assets, stake them, or deploy them into cross-chain apps.
+
+To spend your cross-chain treasury, create a treasury spend proposal. On the proposal creation page, select a chain to spend the treasury from that chain. 
+
+## Create a DAO using an IBC denom
+
+You can create a DAO using an existing IBC denom by entering the denom address during DAO creation. 
+
+Follow the [token DAO creation guide](./token.mdx), and when the app asks if you have an existing token, click **Yes, find my Token** and then specify the asset type as **Denom**. Enter the address of your IBC denom and continue the creation process. 
