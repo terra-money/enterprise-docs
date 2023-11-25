@@ -9,7 +9,7 @@ module.exports = async function config() {
   const katex = (await import("rehype-katex")).default;
   return {
     title: "Enterprise Docs",
-    tagline: "The official docs for Enterprise",
+    tagline: "The official docs for Enterprise DAO.",
     url: "https://docs.enterprise.money",
     baseUrl: "/",
     onBrokenLinks: "throw",
@@ -102,7 +102,7 @@ module.exports = async function config() {
           },
           items: [
             {
-              href: "https://enterprise.money/", //front-end URL
+              href: "https://dao.enterprise.money/", //front-end URL
               position: "right",
               label: "Enterprise App",
               className: "header-terra-link",
