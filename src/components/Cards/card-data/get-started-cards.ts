@@ -13,14 +13,14 @@ const getStartedCards: CardProps[] = [
     lightSVG: '/img/cards/bank.svg',
     darkSVG: '/img/cards/bank.svg',
     header: 'Token DAO guide',
-    summary: 'Create a Community Token DAO.'
+    summary: 'Create a Token DAO.'
   },
   {
     href: '/guides/nft',
     lightSVG: '/img/cards/nft.svg',
     darkSVG: '/img/cards/nft.svg',
     header: 'NFT DAO guide',
-    summary: 'Create an NFT Community DAO.'
+    summary: 'Create an NFT DAO.'
   },
   {
     href: '/guides/stake',
