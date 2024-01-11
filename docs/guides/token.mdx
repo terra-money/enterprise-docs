@@ -1,87 +1,130 @@
 ---
-sidebar_position: 3
+sidebar_position: 1
 ---
 
 import Admonition from '@theme/Admonition';
 
-# Create a Community token DAO
+# Create a Token DAO
 
-Follow the steps below to [create a new Community Token DAO](#create-a-new-community-token-dao) or [create a Community Token DAO using an existing token](#create-a-community-token-dao-using-an-existing-token). For more info on Community Token DAOs, visit the [concepts page](../concepts/about.mdx#community-token-daos).
-
+You can create a DAO around an existing token or you can mint a new token. Follow the steps below to create your token DAO. 
 ## Prerequisites
 
-Before you can create a Community Token DAO, make sure you have completed the following:
+Before you can create a Token DAO, make sure you have completed the following:
 
 - Download Google Chrome
-- Install [the Station Chrome Extension](https://docs.terra.money/learn/station/download/station-extension)
+- Install [the Station Chrome Extension](https://setup.station.money/)
 
 ## Connect your wallet to Enterprise
 
-1. Sign in to your Station wallet using the [Station Browser Extension](https://setup-station.terra.money/). 
+1. Visit [https://dao.enterprise.money/](https://dao.enterprise.money/). 
 
-2. To connect your wallet to Enterprise, click the wallet icon in the upper right corner of the screen. 
+2. To connect your wallet to the Enterprise DAO site, click **Connect Wallet** in the upper-right corner of the screen. 
+
+<img className="readme-img-md" src="/img/screens/token/setup-1.png" />
 
 3. Select **Station Wallet**. 
 
-4. If needed, click **approve** in the Station extension. 
+<img className="readme-img-md" src="/img/screens/token/setup-2.png" />
 
-You are now connected to your wallet. Before you continue, make sure your [network is set to the **mainnet**](https://docs.terra.money/learn/station/networks).
+4. Click **approve** in the Station extension. 
 
-## Create a new Community Token DAO
-
-1. Click on the plus sign on the left side of the screen and select **Community Token DAO**. 
-
-2. Input a name for your DAO and upload a logo. Click **Next**.
-
-3. Enter your token parameters, including decimal places, a token name, and a token symbol. Click **Next**.
-
-4. Enter the wallet addresses you want to receive the initial distribution of tokens. Be sure to specify the amount each wallet will receive. Click **Next**.
-
-5. Enter a token description, a token logo URL, the address of the marketing owner, and a project name. Click **Next**.
-
-6. Define your [threshold](../concepts/config.mdx#threshold), [quorum](../concepts/config.mdx#quorum), [unlocking period](../concepts/config.mdx#unlocking-period), and [vote duration parameters](../concepts/config.mdx#vote-duration). Click **Next**.
+<img className="readme-img-sm" src="/img/screens/token/setup-3.png" />
 
 
+You are now connected to your wallet. Before you continue, make sure your network is set to the **mainnet**.
+
+## Create a Token DAO
+
+1. Click the **Create DAO** button in the upper-right corner of the screen. 
+
+<img className="readme-img-md" src="/img/screens/token/setup-4.png" />
+
+2. Select **Token DAO**. 
+
+<img className="readme-img-md" src="/img/screens/token/setup-5.png" />
+
+3. Input a name for your DAO, a logo URL, and a description. The logo URL must be the direct URL path of an image, not an HTML page. Click **Next**.
+
+<img className="readme-img-md" src="/img/screens/token/setup-6.png" />
+
+## Create a new token
+
+The next steps outline how to create a new token for your DAO. Skip to the [next section](#use-an-existing-token) to create a DAO around an existing token. 
+
+
+1. Click **No, create a new token** and then click **Next**. 
+
+<img className="readme-img-md" src="/img/screens/token/setup-new-1.png" />
+
+
+2. Enter your token parameters, including, a token name, a token symbol, the number of decimal places your token can be denominated in a logo URL, and a token description. Click **Next**.
+
+<img className="readme-img-md" src="/img/screens/token/setup-new-2.png" />
+
+
+4. Enter the wallet addresses you want to receive the initial distribution of tokens. Be sure to specify the amount each wallet will receive. You can also supply the DAO treasury with tokens. Remember to give yourself an initial balance, otherwise you won't be able to stake or vote in the DAO. Click **Next**.
+
+<img className="readme-img-md" src="/img/screens/token/setup-new-3.png" />
+
+## Use an existing token
+
+The next steps outline how to create a DAO around an existing token. If you created a new token, you can skip to the next section. 
+
+1. Click **Yes, find my token** and then search for your token. The list will have all Station-supported CW-20 or native tokens on any chain that has integrated Enterprise DAO. You can view all supported token denominations by visiting the [Station asset repo](https://github.com/terra-money/station-assets). 
+
+<img className="readme-img-md" src="/img/screens/token/setup-ex-2.png" />
+
+2. Click **Next**
+
+
+## Configure the DAO's settings
+
+1. Define your [vote duration](../concepts/config.mdx#vote-duration), [quorum](../concepts/config.mdx#quorum), [threshold](../concepts/config.mdx#threshold), [veto threshold](../concepts/config.mdx#veto-threshold), and [unlocking period](../concepts/config.mdx#unlocking-period) parameters. You can also specify the minimum number of staked tokes needed to vote, and a minimum required to recieve rewards. 
 
 <Admonition type="caution" title="Updating parameters">
 
-After creation, [general parameters](../concepts/config.mdx#general-parameters) can only be updated using a [DAO configuration proposal](../concepts/governance.mdx#dao-configuration-proposals). 
+After creation, [DAO parameters](../concepts/config.mdx) can only be updated using a [governance proposal](./governance.mdx). 
 
 </Admonition>
 
-7. Enter any social media links you wish to add. Click **Next**.
 
-8. Input the password for your Station browser extension wallet and click **Post**.
+<img className="readme-img-md" src="/img/screens/token/setup-7.png" />
 
-9. Optional: Add council members to your DAO. Council members are DAO members with control over specified actions. Choose the options allowed to be executed by council members, set a quorum, threshold, and input the addresses of council members. 
+2. Click **Next**.
 
-Congratulations! You've just made a Community Token DAO!
+## Add council members
 
-## Create a Community Token DAO using an existing token
+DAO council members can create emergency proposals to update the DAO's contract, whitelist, or information without having to go through regular governance. 
 
-Follow the steps below to make a DAO using an existing [CW-20 token contract address](https://docs.cosmwasm.com/cw-plus/0.9.0/cw20/spec/#messages-1).
+1. Add the wallet addresses of your council members, and specify a threshold and quorum number for council votes. 
 
-1. Click on the plus sign on the left side of the screen and select **Community Token DAO**. 
+<img className="readme-img-md" src="/img/screens/token/setup-8.png" />
 
-2. Input a name for your DAO and upload a logo. Click **Next**.
-
-3. Select **Yes, find my existing token** and input your existing token contract address. Click **Next**. 
-
-4. Define your [threshold](../concepts/config.mdx#threshold), [quorum](../concepts/config.mdx#quorum), [unlocking period](../concepts/config.mdx#unlocking-period), and [vote duration parameters](../concepts/config.mdx#vote-duration). Click **Next**.
+2. Click **Next**. 
 
 
-<Admonition type="caution" title="Updating parameters">
 
-After creation, [general parameters](../concepts/config.mdx#general-parameters) can only be updated using a [DAO configuration proposal](../concepts/governance.mdx#dao-configuration-proposals). 
+## Final steps
+
+1. Enter any social media links you wish to add. Click **Next**.
+
+<img className="readme-img-md" src="/img/screens/token/setup-9.png" />
+
+2. Review all the settings for your DAO carefully and click **Next**. 
+
+<img className="readme-img-md" src="/img/screens/token/setup-10.png" />
+
+<Admonition type="caution" title="Review your parameters">
+
+Remember, the only way to change these parameters is through a [governance proposal](./governance.mdx). 
 
 </Admonition>
 
-5. Optional: Add council members to your DAO. Council members are DAO members with control over specified actions. Choose the options allowed to be executed by council members, set a quorum, threshold, and input the addresses of council members. 
 
-6. Enter any social media links you wish to add. Click **Next**.
+3. Review the transaction in Station and click **Post**.
 
-7. Input the password for your Station browser extension wallet and click **Post**.
+<img className="readme-img-md" src="/img/screens/token/setup-11.png" />
 
-Congratulations! You've just made a Community Token DAO!
+Congratulations! You've just made a Token DAO!
 
 
