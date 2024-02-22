@@ -79,12 +79,12 @@ module.exports = async function config() {
             autoCollapseCategories: false,
           },
         },
-        // algolia:{
-        //   appId: 'Z6EOSIPZCY',
-        //   apiKey: '532be63cd62ff0e733ccd844e799e8bb',
-        //   indexName: 'terra-project',
-        //   contextualSearch: true,
-        // },
+        algolia:{
+          appId: '0TX7RV460I',
+          apiKey: 'e3b9471426a32f27e506a7574d128635',
+          indexName: 'enterprise',
+          contextualSearch: true,
+        },
         tableOfContents: {
           minHeadingLevel: 2,
           maxHeadingLevel: 4,
