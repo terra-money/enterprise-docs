@@ -85,7 +85,7 @@ module.exports = async function config() {
         },
         algolia:{
           appId: '0TX7RV460I',
-          apiKey: 'e3b9471426a32f27e506a7574d128635',
+          apiKey: 'c5c87dbac7e4f8bca6c587d58ba9dec8',
           indexName: 'enterprise',
           contextualSearch: true,
         },
